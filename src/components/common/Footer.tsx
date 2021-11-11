@@ -1,5 +1,5 @@
-import React from 'react'
+import React from 'react';
 
-const Footer:React.FC = () => (<></>);
+const Footer: React.FC = () => <></>;
 
-export default Footer
+export default Footer;
