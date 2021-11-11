@@ -1,4 +1,4 @@
-// import React from 'react'
+import React from 'react'
 // import type { NextFunctionComponent } from 'next'
 
 
@@ -6,7 +6,7 @@
 //     return <span>Hello </span>
 // }
 
-function Header(){
+const Header:React.FC=()=>{
 return <span>Hello </span>
 }
 
