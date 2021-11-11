@@ -3,7 +3,6 @@ import React from 'react';
 type SectionPropsType = {
   title: string;
   background: string;
-  children: React.ReactNode;
 };
 
 const Section: React.FC<SectionPropsType> = ({
