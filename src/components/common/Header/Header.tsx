@@ -4,9 +4,9 @@ import Link from "next/link";
 import styles from "./Header.module.scss";
 
 const navigation = [
-  { id: "home", title: "Deriv website", path: "/" },
-  { id: "about", title: "About us", path: "/about" },
-  { id: "contact-us", title: "Contact us", path: "/contact-us" },
+  { id: "deriv-com", title: "Deriv website", path: "https://deriv.com" },
+  { id: "deriv-com-about", title: "About us", path: "https://deriv.com/about" },
+  { id: "deriv-com-contact-us", title: "Contact us", path: "https://deriv.com/contact-us" },
   { id: "/", title: "Home", path: "/" },
   { id: "docs", title: "Documentation", path: "/docs" },
   { id: "playground", title: "API Playground", path: "/playground" },

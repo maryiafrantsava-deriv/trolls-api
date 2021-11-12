@@ -13,7 +13,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
       />
       <link rel="icon" href="/deriv.png" />
     </Head>
-    <Component {...pageProps} />
+    <div className="main-content">
+      <Component {...pageProps} />
+    </div>
   </Layout>
 );
 
