@@ -1,1 +1,5 @@
-import React from "react";
+const CodeSamples = () => {
+  return <div>CodeSamples</div>;
+};
+
+export default CodeSamples;

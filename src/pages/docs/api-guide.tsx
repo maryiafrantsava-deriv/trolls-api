@@ -1,1 +1,5 @@
-import React from "react";
+const ApiGuide = () => {
+  return <div>ApiGuide</div>;
+};
+
+export default ApiGuide;
