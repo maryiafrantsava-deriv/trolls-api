@@ -1,22 +1,30 @@
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import styles from './Header.module.scss';
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import styles from "./Header.module.scss";
+
+const navigation = [
+  { id: "home", title: "Deriv website", path: "/" },
+  { id: "about", title: "About us", path: "/about" },
+  { id: "contact-us", title: "Contact us", path: "/contact-us" },
+  { id: "/", title: "Home", path: "/" },
+  { id: "docs", title: "Documentation", path: "/docs" },
+  { id: "playground", title: "API Playground", path: "/playground" },
+];
 
 const Header: React.FC = () => {
   return (
     <div id="main-nav" className={styles.nav}>
       <div className={`${styles.topNav} ${styles.flexContainer}`}>
         <div className={styles.topNavContainer}>
-          <Link href="https://deriv.com">
-            <a className={styles.a}>Deriv website</a>
-          </Link>
-          <Link href="https://deriv.com/about">
-            <a className={styles.a}>About us</a>
-          </Link>
-          <Link href="https://deriv.com/contact-us">
-            <a className={styles.a}>Contact us</a>
-          </Link>
+          {navigation.map(
+            ({ id, title, path }, i) =>
+              i < 3 && (
+                <Link key={id} href={path}>
+                  <a className={styles.a}>{title}</a>
+                </Link>
+              )
+          )}
         </div>
       </div>
 
@@ -30,7 +38,7 @@ const Header: React.FC = () => {
             width="16"
             height="16"
           />
-          <Link href="{{ branch }}/">
+          <Link href={navigation[0].path}>
             <a className={styles.flexContainer}>
               <Image
                 className="logo"
@@ -46,15 +54,13 @@ const Header: React.FC = () => {
             id="navbar"
             className={`${styles.flexContainer} ${styles.navbar}`}
           >
-            <Link href="{{ branch }}/">
-              <a id="">Home</a>
-            </Link>
-            <Link href="{{ branch }}/docs/">
-              <a id="docs">Documentation</a>
-            </Link>
-            <Link href="{{ branch }}/playground/">
-              <a id="playground">API Playground</a>
-            </Link>
+            {navigation.map(({ id, title, path }, i) =>
+              i > 2 ? (
+                <Link key={id} href={path}>
+                  <a id={id}>{title}</a>
+                </Link>
+              ) : null
+            )}
           </nav>
         </div>
       </header>
