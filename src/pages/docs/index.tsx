@@ -1,7 +1,10 @@
-import Link from "next/link";
+import DocsLayout from "components/Documentation/Layout/DocsLayout";
+import QuickStart from "components/QuickStart/QuickStart";
 import CodeSample from "../../components/common/CodeSample/CodeSample";
 
-
+type PageComponentWithLayout = React.FC & {
+    Layout: React.FC;
+};
 
 const codeSampleData = [
     {
@@ -32,32 +35,17 @@ const codeSampleData = [
     }
 
 ]
-const Docs: React.FC = () => {
+const Docs: PageComponentWithLayout = () => {
     return (
-
-        <div className="page-content">
-            <h1 className="doc-main-title">Quickstart to Deriv API</h1>
-            <div>
-                <p>On this page, you&#39;ll find code samples in various programming languages showing you how to work
-                    with the Deriv API to perform some of the most important operations.</p>
-                <p>You can find all of the other available calls in the  <Link href="/playground/"><a>API Playground</a></Link>.</p>
-                <h3 className="api-sub-title bold">Before you begin</h3>
-                <ul>
-                    <li>Open a <Link href="https://deriv.com/"><a>Deriv account</a></Link> (either a demo or real account).</li>
-                    <li>Create a new token using the <Link href="https://app.deriv.com/account/api-token"><a>admin scope</a></Link>.</li>
-                    <li>Register your app to receive your <b>app_id</b> or use <b>app_id 1089</b> to test Deriv API.</li>
-                </ul>
-                <h3 className="api-sub-title bold">Setting up your environment</h3>
-                <p>Instructions for setting up your environment and running the examples in your desired programming
-                    language are given as comments in the code samples.</p>
-            </div>
+        <div>
+            <QuickStart />
             {codeSampleData.map((data, index) =>
                 <CodeSample key={index} id={data.id} title={data.title} desc={data.description} subdesc={data.subdescription} />
             )}
-
-
         </div>
     );
 };
+
+Docs.Layout = DocsLayout;
 
 export default Docs;
