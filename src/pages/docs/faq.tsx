@@ -1,9 +1,10 @@
-const Faq: React.FC = () => {
-    return (
-        <div>
-      Faq
-        </div>
-    );
+import { ComponentWithLayout } from "../../types";
+import DocsLayout from "components/Documentation/Layout/DocsLayout";
+
+const FAQ: ComponentWithLayout = () => {
+    return <div>FAQ</div>;
 };
 
-export default Faq;
+FAQ.Layout = DocsLayout
+
+export default FAQ;

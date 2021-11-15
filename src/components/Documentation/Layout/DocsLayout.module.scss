@@ -1,0 +1,49 @@
+@media (max-width: 992px) {
+    .vertical-separator {
+        display: none;
+    }
+}
+
+
+.doc-content {
+    flex-direction: column;
+    padding: 75px 16px 40px;
+    width: unset;
+    min-height: calc(88vh - 54px);
+    justify-content: unset;
+
+    .page-wrapper {
+      width: 100% !important;
+    }
+}
+
+#content > .documentation {
+    width: 80%;
+    margin-top: 20px;
+  
+    @media (max-width: 1300px) {
+      width: 90%;
+    }
+  
+    @media (max-width: 1164px) {
+      width: 95%;
+    }
+}
+
+.page-wrapper {
+    display: flex;
+    color: #333333;
+}
+
+#mobile-page-selector {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: none;
+}
+
+.vertical-separator {
+    width: 2px;
+    height: inherit;
+    margin-left: 220px;
+    background-color: rgba(240, 241, 243, 0.64);
+}
