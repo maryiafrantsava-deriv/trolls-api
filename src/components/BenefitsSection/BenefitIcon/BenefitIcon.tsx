@@ -10,7 +10,7 @@ export const BenefitIcon: React.FC<BenefitPropsType> = props => {
     const { title, imgPath } = props;
 
     return (
-        <div className={styles.singleContainer}>
+        <div className={`${styles["single-container"]}`}>
             <Image alt={title} src={imgPath} width="72" height="72" />
             <p>{title}</p>
         </div>
