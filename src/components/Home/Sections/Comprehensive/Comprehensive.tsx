@@ -1,5 +1,5 @@
 import React from "react";
-import dataComprehensive from "../Comprehensive/DataComprehensive";
+import data_comprehensive from "utils/data-comprehensive";
 import styles from "../Comprehensive/Comprehensive.module.scss";
 import Title from "components/common/Title/Title";
 
@@ -15,17 +15,17 @@ const Comprehensive: React.FC<ComprehensivePropsType> = ({id}) => {
                 <div className={`${styles.singleContainer}`}>
                     <img
                         className={`${styles.libraryIcon}`}
-                        src={dataComprehensive.icon}
+                        src={data_comprehensive.icon}
                         width={64}
                         height={64}
                         alt="preview"
                     />
-                    <Title headerSize="h1">{dataComprehensive.title}</Title>
+                    <Title headerSize="h1">{data_comprehensive.title}</Title>
                     <div className={`${styles.subheader}`}>
-                        <span>{dataComprehensive.textFirstPart}</span>
-                        <span>{dataComprehensive.textSecondPart}</span>
+                        <span>{data_comprehensive.textFirstPart}</span>
+                        <span>{data_comprehensive.textSecondPart}</span>
                     </div>
-                    {dataComprehensive.link}
+                    {data_comprehensive.link}
                 </div>
             </div>
         </section>

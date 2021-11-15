@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const dataComprehensive = {
+const data_comprehensive = {
     icon: "/js-library.svg",
     title: [ "Comprehensive all-in-one JavaScript client library" ],
     textFirstPart: [ "Simplify your development processes and get your app up and running" ],
@@ -11,4 +11,4 @@ const dataComprehensive = {
     </Link> ]
 };
 
-export default dataComprehensive;
+export default data_comprehensive;
