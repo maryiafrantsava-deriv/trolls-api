@@ -1,11 +1,16 @@
 import DocsLayout from "components/Documentation/Layout/DocsLayout";
+import QuickStart from "components/QuickStart/QuickStart";
 
-type ComponentWithLayout = React.FC & {
-  Layout: React.FC
-}
+type PageComponentWithLayout = React.FC & {
+    Layout: React.FC;
+};
 
-const Docs: ComponentWithLayout = () => {
-    return <div>Quick Start</div>
+const Docs: PageComponentWithLayout = () => {
+    return (
+        <div>
+            <QuickStart />
+        </div>
+    );
 };
 
 Docs.Layout = DocsLayout;

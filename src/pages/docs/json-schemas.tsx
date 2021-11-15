@@ -1,10 +1,10 @@
-import { ComponentWithLayout } from "../../types";
+import { PageComponentWithLayout } from "../../types";
 import DocsLayout from "components/Documentation/Layout/DocsLayout";
 
-const JSONSchemas: ComponentWithLayout = () => {
+const JSONSchemas: PageComponentWithLayout = () => {
     return <div>JSON Schemas</div>;
 };
 
-JSONSchemas.Layout = DocsLayout
+JSONSchemas.Layout = DocsLayout;
 
 export default JSONSchemas;
