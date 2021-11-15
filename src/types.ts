@@ -1,3 +1,3 @@
-export type ComponentWithLayout = React.FC & {
+export type PageComponentWithLayout = React.FC & {
     Layout: React.FC;
 };

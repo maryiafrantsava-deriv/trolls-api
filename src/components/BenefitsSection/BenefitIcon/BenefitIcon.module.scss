@@ -1,0 +1,15 @@
+.singleContainer {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    p {
+        margin-bottom: 32px;
+        text-align: center;
+        line-height: 28px;
+        font-size: 22px;
+    }
+}

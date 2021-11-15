@@ -1,10 +1,10 @@
-import { ComponentWithLayout } from "../../types";
+import { PageComponentWithLayout } from "../../types";
 import DocsLayout from "components/Documentation/Layout/DocsLayout";
 
-const ApiGuide: ComponentWithLayout = () => {
+const ApiGuide: PageComponentWithLayout = () => {
     return <div>Api Guide</div>;
 };
 
-ApiGuide.Layout = DocsLayout
+ApiGuide.Layout = DocsLayout;
 
 export default ApiGuide;

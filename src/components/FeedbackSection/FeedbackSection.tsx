@@ -29,7 +29,7 @@ const bugBountyFeedbackSection = {
 };
 
 type FeedbackSectionPropsType = {
-  id: string;
+    id: string;
 };
 
 const FeedbackSection: React.FC<FeedbackSectionPropsType> = ({ id }) => {
