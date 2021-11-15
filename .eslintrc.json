@@ -7,6 +7,6 @@
       { "avoidEscape": true, "allowTemplateLiterals": false }
     ],
     "indent": ["error", 4],
-    "jsx-quotes": [2, "prefer-double"]
+    "jsx-quotes": ["error", "prefer-double"]
   }
 }
