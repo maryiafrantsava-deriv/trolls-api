@@ -2,14 +2,14 @@ import Section from "components/Home/Section/Section";
 
 
 const Home = () => {
-  return (
-    <div>
-      {/* <Section/>
+    return (
+        <div>
+            {/* <Section/>
     <Section/>
     <Section/>
     <Section/> */}
-    </div>
-  );
+        </div>
+    );
 };
 
 export default Home;
