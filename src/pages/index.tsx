@@ -1,7 +1,13 @@
+import Section from "components/Home/Section/Section";
+
+
 const Home = () => {
     return (
         <div>
-      Good luck Trolls! :)
+            {/* <Section/>
+    <Section/>
+    <Section/>
+    <Section/> */}
         </div>
     );
 };
