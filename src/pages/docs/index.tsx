@@ -5,7 +5,7 @@ type ComponentWithLayout = React.FC & {
 }
 
 const Docs: ComponentWithLayout = () => {
-  return <div>Quick Start</div>
+    return <div>Quick Start</div>
 };
 
 Docs.Layout = DocsLayout;
