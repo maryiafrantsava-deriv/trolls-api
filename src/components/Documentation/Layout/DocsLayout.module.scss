@@ -4,35 +4,33 @@
     }
 }
 
-
 .doc-content {
-    flex-direction: column;
-    padding: 75px 16px 40px;
-    width: unset;
+    padding: 105px 0 80px;
     min-height: calc(88vh - 54px);
-    justify-content: unset;
-
-    .page-wrapper {
-      width: 100% !important;
-    }
+    justify-content: center;
+    display: flex;
 }
 
-#content > .documentation {
+.doc-content > .documentation {
     width: 80%;
     margin-top: 20px;
-  
+
     @media (max-width: 1300px) {
-      width: 90%;
+        width: 90%;
     }
-  
+
     @media (max-width: 1164px) {
-      width: 95%;
+        width: 95%;
     }
 }
 
 .page-wrapper {
     display: flex;
     color: #333333;
+}
+
+.page-wrapper :nth-child(3) {
+    width: 100%;
 }
 
 #mobile-page-selector {
