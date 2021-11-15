@@ -1,4 +1,5 @@
 import FeedbackSection from "../components/FeedbackSection/FeedbackSection";
+import Comprehensive from "../components/Home/Sections/Comprehensive";
 import { BenefitSection } from "../components/BenefitsSection/BenefitSection";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
         <div>
             Good luck Trolls!
             <BenefitSection />
+            <Comprehensive id="comprehensive"/>
             <FeedbackSection id="home" />
         </div>
     );
