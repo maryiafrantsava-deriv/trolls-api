@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import AccordionItem from "./AccordionItem";
 import styles from "./Accordion.module.scss";
+import { PATHS } from "utils";
 
 const Accordion: React.FC = () => {
     return (
@@ -53,7 +54,7 @@ const Accordion: React.FC = () => {
                     </li>
                     <li>
                         Insert your affiliate token into the{" "}
-                        <Link href="/playground/#new_account_virtual">
+                        <Link href={`${PATHS.PLAYGROUND}/#new_account_virtual`} passHref={true}>
                             <code className={styles["code"]}>new_account_virtual</code>
                         </Link>{" "}
                         call in your app.
@@ -67,7 +68,7 @@ const Accordion: React.FC = () => {
                         Sign up as a <Link href="https://deriv.com/partners/payment-agent/">payment agent</Link> to
                         process local payments for our clients in your country. You may automate your payment agent
                         facility using the
-                        <Link href="/playground/#paymentagent_transfer">
+                        <Link href={`${PATHS.PLAYGROUND}/#paymentagent_transfer`} passHref={true}>
                             <code className={styles["code"]}>paymentagent_transfer</code>
                         </Link>{" "}
                         API call.
