@@ -29,67 +29,67 @@ const bugBountyFeedbackSection = {
 };
 
 type FeedbackSectionPropsType = {
-  id: string;
+    id: string;
 };
 
 const FeedbackSection: React.FC<FeedbackSectionPropsType> = ({ id }) => {
     switch (id) {
-    case "home":
-        return (
-            <div className={`${styles.rowContainer} ${styles.feedbackHomeContainer}`}>
-                <SingleFeedbackSection
-                    title={"Get connected"}
-                    headerSize={2}
-                    description={homeFeedbackSection.description.left}
-                    buttonLinkPath={"https://binary.vanillacommunity.com/"}
-                    titleButton={"Join our community"}
-                    background={"black"}
-                    showButton
-                />
-                <SingleFeedbackSection
-                    title={"We’re here to help"}
-                    headerSize={2}
-                    description={homeFeedbackSection.description.right}
-                    background={"black"}
-                    showButton={false}
-                />
-            </div>
-        );
-    case "bugBounty":
-        return (
-            <div className={`${styles.rowContainer} ${styles.bugBountyContainer}`}>
-                <SingleFeedbackSection
-                    background={"gray"}
-                    title={"Explore our bounty programme"}
-                    headerSize={2}
-                    buttonLinkPath={"https://hackerone.com/binary"}
-                    titleButton={"Go to Hackerone"}
-                    showButton
-                />
-                <SingleFeedbackSection
-                    background={"gray"}
-                    title={"Got questions?"}
-                    headerSize={2}
-                    description={bugBountyFeedbackSection.description.right}
-                    showButton={false}
-                />
-            </div>
-        );
-    case "appRegistration":
-        return (
-            <div className={`${styles.rowContainer} ${styles.appRegistartion}`}>
-                <SingleFeedbackSection
-                    background={"gray"}
-                    title={"Looking for your API token?"}
-                    headerSize={3}
-                    buttonLinkPath={"https://app.deriv.com/account/api-token"}
-                    titleButton={"Get your API token"}
-                    showButton
-                />
-            </div>
-        );
-    default:
-        return <></>;
+        case "home":
+            return (
+                <div className={`${styles.rowContainer} ${styles.feedbackHomeContainer}`}>
+                    <SingleFeedbackSection
+                        title={"Get connected"}
+                        headerSize={2}
+                        description={homeFeedbackSection.description.left}
+                        buttonLinkPath={"https://binary.vanillacommunity.com/"}
+                        titleButton={"Join our community"}
+                        background={"black"}
+                        showButton
+                    />
+                    <SingleFeedbackSection
+                        title={"We’re here to help"}
+                        headerSize={2}
+                        description={homeFeedbackSection.description.right}
+                        background={"black"}
+                        showButton={false}
+                    />
+                </div>
+            );
+        case "bugBounty":
+            return (
+                <div className={`${styles.rowContainer} ${styles.bugBountyContainer}`}>
+                    <SingleFeedbackSection
+                        background={"gray"}
+                        title={"Explore our bounty programme"}
+                        headerSize={2}
+                        buttonLinkPath={"https://hackerone.com/binary"}
+                        titleButton={"Go to Hackerone"}
+                        showButton
+                    />
+                    <SingleFeedbackSection
+                        background={"gray"}
+                        title={"Got questions?"}
+                        headerSize={2}
+                        description={bugBountyFeedbackSection.description.right}
+                        showButton={false}
+                    />
+                </div>
+            );
+        case "appRegistration":
+            return (
+                <div className={`${styles.rowContainer} ${styles.appRegistartion}`}>
+                    <SingleFeedbackSection
+                        background={"gray"}
+                        title={"Looking for your API token?"}
+                        headerSize={3}
+                        buttonLinkPath={"https://app.deriv.com/account/api-token"}
+                        titleButton={"Get your API token"}
+                        showButton
+                    />
+                </div>
+            );
+        default:
+            return <></>;
     }
 };
 
