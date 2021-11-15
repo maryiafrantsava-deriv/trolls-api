@@ -2,6 +2,9 @@
     .vertical-separator {
         display: none;
     }
+    .page-wrapper {
+        flex-direction: column;
+    }
 }
 
 .doc-content {
