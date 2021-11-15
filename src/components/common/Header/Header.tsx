@@ -2,14 +2,15 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./Header.module.scss";
+import { PATHS } from "utils";
 
 const navigation = [
     { id: "deriv-com", title: "Deriv website", path: "https://deriv.com" },
     { id: "deriv-com-about", title: "About us", path: "https://deriv.com/about" },
     { id: "deriv-com-contact-us", title: "Contact us", path: "https://deriv.com/contact-us" },
     { id: "/", title: "Home", path: "/" },
-    { id: "docs", title: "Documentation", path: "/docs" },
-    { id: "playground", title: "API Playground", path: "/playground" },
+    { id: "docs", title: "Documentation", path: PATHS.DOCS },
+    { id: "playground", title: "API Playground", path: PATHS.PLAYGROUND },
 ];
 
 const Header: React.FC = () => {

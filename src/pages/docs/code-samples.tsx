@@ -1,10 +1,10 @@
-import { ComponentWithLayout } from "../../types";
+import { PageComponentWithLayout } from "../../types";
 import DocsLayout from "components/Documentation/Layout/DocsLayout";
 
-const CodeSamples: ComponentWithLayout = () => {
+const CodeSamples: PageComponentWithLayout = () => {
     return <div>Code Samples</div>;
 };
 
-CodeSamples.Layout = DocsLayout
+CodeSamples.Layout = DocsLayout;
 
 export default CodeSamples;

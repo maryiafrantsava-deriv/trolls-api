@@ -3,13 +3,13 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import Header from "components/common/Header/Header";
 import Footer from "components/common/Footer";
-import { ComponentWithLayout } from "../types";
+import { PageComponentWithLayout } from "../types";
 
-const EmptyLayout: React.FC = ({ children }) => <div id="zalupa">{children}</div>;
+const EmptyLayout: React.FC = ({ children }) => <div id="what?">{children}</div>;
 
 type MyApp = AppProps & {
-  Component: ComponentWithLayout
-}
+    Component: PageComponentWithLayout;
+};
 
 const MyApp = ({ Component, pageProps }: MyApp) => {
     const Layout = Component.Layout || EmptyLayout;
@@ -32,7 +32,7 @@ const MyApp = ({ Component, pageProps }: MyApp) => {
             </div>
             <Footer />
         </>
-    )
+    );
 };
 
 export default MyApp;
