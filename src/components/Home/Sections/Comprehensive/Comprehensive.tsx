@@ -2,6 +2,7 @@ import React from "react";
 import data_comprehensive from "utils/data-comprehensive";
 import styles from "../Comprehensive/Comprehensive.module.scss";
 import Title from "components/common/Title/Title";
+import data_deriv_api from "utils/data-deriv-api";
 
 type ComprehensivePropsType = {
     id: string;
@@ -29,7 +30,17 @@ const Comprehensive: React.FC<ComprehensivePropsType> = ({id}) => {
                 </div>
             </div>
         </section>
-    ) : null;
+    ):(
+        <div className={`${styles["hero-image"]}`}>
+            <div className={`${styles["hero-container"]}`}>
+                <Title headerSize="h1">{data_deriv_api.title}</Title>
+                <div className={`${styles.subheader}`}>
+                    <span>{data_deriv_api.textFirstPart}</span>
+                    <span>{data_deriv_api.textSecondPart}</span>
+                </div>
+            </div>
+        </div>
+    )
 }
 
 export default Comprehensive;
