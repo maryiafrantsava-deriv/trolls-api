@@ -2,7 +2,7 @@ import useIsMobile from "hooks/useIsMobile";
 import Sidebar from "./Sidebar/Sidebar";
 import style from "./DocsLayout.module.scss";
 
-const DocsLayout: React.FC = () => {
+const DocsLayout: React.FC = ({ children }) => {
     const is_mobile = useIsMobile();
 
     return (
@@ -10,10 +10,10 @@ const DocsLayout: React.FC = () => {
             <div className={`${style["page-wrapper"]} ${style.documentation}`}>
                 <Sidebar is_mobile={is_mobile} />
                 <div className={style["vertical-separator"]}></div>
-                <div className={style["page-content"]}></div>
+                <div className={style["page-content"]}>{children}</div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default DocsLayout;

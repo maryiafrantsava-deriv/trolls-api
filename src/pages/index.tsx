@@ -1,13 +1,13 @@
-import Section from "components/Home/Section/Section";
-
+import FeedbackSection from "../components/FeedbackSection/FeedbackSection";
+import Section from "../components/Home/Section/Section";
 
 const Home = () => {
     return (
         <div>
-            {/* <Section/>
-    <Section/>
-    <Section/>
-    <Section/> */}
+            Good luck Trolls!
+            <Section>
+                <FeedbackSection id="home" />
+            </Section>
         </div>
     );
 };

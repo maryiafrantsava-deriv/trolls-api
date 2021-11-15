@@ -1,10 +1,15 @@
-import { ComponentWithLayout } from "../../types";
-import DocsLayout from "components/Documentation/Layout/DocsLayout";
+import Section from "../../components/Home/Section/Section";
+import FeedbackSection from "../../components/FeedbackSection/FeedbackSection";
+import DocsLayout from "../../components/Documentation/Layout/DocsLayout";
 
-const BugBounty: ComponentWithLayout = () => {
-    return <div>Bug Bounty</div>;
+const BugBounty = () => {
+    return (
+        <Section>
+            <FeedbackSection id="bugBounty" />
+        </Section>
+    );
 };
 
-BugBounty.Layout = DocsLayout
+BugBounty.Layout = DocsLayout;
 
 export default BugBounty;
