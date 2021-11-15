@@ -1,9 +1,15 @@
+import Section from "components/Home/Section/Section";
+
+
 const Home = () => {
-    return (
-        <div>
-      Good luck Trolls! :)
-        </div>
-    );
+  return (
+    <div>
+      {/* <Section/>
+    <Section/>
+    <Section/>
+    <Section/> */}
+    </div>
+  );
 };
 
 export default Home;
