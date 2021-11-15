@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 type SectionPropsType = {
-  title: string;
-  background: string;
+  title?: string;
+  background?: string;
 };
 
 const Section: React.FC<SectionPropsType> = ({
@@ -11,9 +11,11 @@ const Section: React.FC<SectionPropsType> = ({
   children,
 }) => (
   <section>
-    <div>
-      <h2>{title}</h2>
-    </div>
+    {title && (
+      <div>
+        <h2>{title}</h2>
+      </div>
+    )}
     <div>{children}</div>
   </section>
 );
