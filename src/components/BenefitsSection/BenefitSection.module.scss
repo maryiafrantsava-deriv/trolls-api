@@ -1,0 +1,42 @@
+.main-page-row {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 0;
+
+    .column-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        width: 80%;
+        align-items: center;
+        justify-content: center;
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 48px;
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            min-height: 208px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .benefits-icons {
+            width: 65%;
+            flex-wrap: nowrap;
+            margin-bottom: 20px;
+        }
+    }
+}
