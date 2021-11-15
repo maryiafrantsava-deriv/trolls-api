@@ -9,45 +9,45 @@ type SingleFeedbackSectionPropsType = {
   buttonLinkPath?: string;
   titleButton?: string;
   showButton: boolean;
-  background: 'black' | 'gray'
+  background: "black" | "gray"
 
 };
 
 const SingleFeedbackSection: React.FC<SingleFeedbackSectionPropsType> = (
-  props
+    props
 ) => {
-  const {
-    title,
-    headerSize,
-    description,
-    buttonLinkPath,
-    titleButton,
-    showButton,
-    background,
-  } = props;
+    const {
+        title,
+        headerSize,
+        description,
+        buttonLinkPath,
+        titleButton,
+        showButton,
+        background,
+    } = props;
 
-  const CustomHeaderTitleTag = `h${headerSize}` as keyof JSX.IntrinsicElements;
+    const CustomHeaderTitleTag = `h${headerSize}` as keyof JSX.IntrinsicElements;
 
-  const titleButtonTextColor = background === 'black' ? styles.whiteColor : styles.blackColor
-  const paragraphColor = background === 'black' ? styles.grayColor : styles.blackColor
+    const titleButtonTextColor = background === "black" ? styles.whiteColor : styles.blackColor
+    const paragraphColor = background === "black" ? styles.grayColor : styles.blackColor
 
-  return (
-    <div className={styles.singleContainer}>
-      <CustomHeaderTitleTag className={titleButtonTextColor}>{title}</CustomHeaderTitleTag>
-      {description && <p className={paragraphColor}>{description}</p>}
-      {showButton && buttonLinkPath && (
-        <Link href={buttonLinkPath}>
-          <a
-            className={`${styles.communityButton} ${titleButtonTextColor}`}
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            {titleButton}
-          </a>
-        </Link>
-      )}
-    </div>
-  );
+    return (
+        <div className={styles.singleContainer}>
+            <CustomHeaderTitleTag className={titleButtonTextColor}>{title}</CustomHeaderTitleTag>
+            {description && <p className={paragraphColor}>{description}</p>}
+            {showButton && buttonLinkPath && (
+                <Link href={buttonLinkPath}>
+                    <a
+                        className={`${styles.communityButton} ${titleButtonTextColor}`}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                    >
+                        {titleButton}
+                    </a>
+                </Link>
+            )}
+        </div>
+    );
 };
 
 export default SingleFeedbackSection;

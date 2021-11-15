@@ -1,5 +1,5 @@
 const AppRegistration = () => {
-  return <div>AppRegistration</div>;
+    return <div>AppRegistration</div>;
 };
 
 export default AppRegistration;

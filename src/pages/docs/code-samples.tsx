@@ -1,5 +1,5 @@
 const CodeSamples = () => {
-  return <div>CodeSamples</div>;
+    return <div>CodeSamples</div>;
 };
 
 export default CodeSamples;

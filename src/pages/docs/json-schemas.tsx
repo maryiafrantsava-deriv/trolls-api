@@ -1,9 +1,9 @@
 const JSONSchemas: React.FC = () => {
     return (
-      <div>
+        <div>
         JSONSchemas
-      </div>
+        </div>
     );
-  };
+};
   
-  export default JSONSchemas;
+export default JSONSchemas;
