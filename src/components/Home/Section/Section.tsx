@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 type SectionPropsType = {
   title: string;
@@ -6,16 +6,16 @@ type SectionPropsType = {
 };
 
 const Section: React.FC<SectionPropsType> = ({
-  title,
-  background,
-  children,
+    title,
+    background,
+    children,
 }) => (
-  <section>
-    <div>
-      <h2>{title}</h2>
-    </div>
-    <div>{children}</div>
-  </section>
+    <section>
+        <div>
+            <h2>{title}</h2>
+        </div>
+        <div>{children}</div>
+    </section>
 );
 
 export default Section;

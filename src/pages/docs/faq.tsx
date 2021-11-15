@@ -1,9 +1,9 @@
 const Faq: React.FC = () => {
-  return (
-    <div>
+    return (
+        <div>
       Faq
-    </div>
-  );
+        </div>
+    );
 };
 
 export default Faq;
