@@ -17,7 +17,7 @@ const Accordion: React.FC = () => {
                 <p>Simply copy our open-source code and adapt it for your needs. Follow these steps to get started:</p>
                 <ol>
                     <li>
-                        Open a <Link href="http://www.github.com">GitHub</Link> account.
+                        Open a <Link href="https://www.github.com">GitHub</Link> account.
                     </li>
                     <li>
                         Download the <Link href="https://desktop.github.com">GitHub Desktop application</Link>.
