@@ -1,10 +1,13 @@
 import FeedbackSection from "../components/FeedbackSection/FeedbackSection";
-import Section from "../components/Home/Section/Section";
+import Section from "components/Home/Section/Section";
+import Comprehensive from '../components/Home/Sections/Comprehensive';
 
 const Home = () => {
     return (
         <div>
-            Good luck Trolls!
+            <Section>
+                <Comprehensive id='comprehensive'/>
+            </Section>
             <Section>
                 <FeedbackSection id="home" />
             </Section>
