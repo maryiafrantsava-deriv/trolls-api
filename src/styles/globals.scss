@@ -6,6 +6,13 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+* {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -17,4 +24,144 @@ a {
 
 .main-content {
   padding: 105px 16px 0;
+}
+
+
+.page-content {
+  width: calc(100% - 262px);
+  padding-left: 42px;
+  a {
+    color: #ff444f;
+    text-decoration: none;
+}
+}
+.bold {
+  font-weight: bold;
+}
+.api-sub-title {
+  margin-bottom: 8px;
+}
+
+h3 {
+  margin-bottom: 16px;
+  font-size: 24px;
+  text-align: left;
+  line-height: 1.5;
+  color: #333333;
+
+  @media (max-width: 480px) {
+    font-size: 18px;
+  }
+}
+ul {
+  margin-left: 20px;
+
+  li {
+    margin-bottom: 16px;
+  }
+}
+
+p {
+  line-height: 28px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  margin-bottom: 40px;
+  font-size: 48px;
+  text-align: center;
+  color: #333333;
+}
+
+.doc-content {
+  padding: 105px 0 80px;
+  display: flex;
+  justify-content: center;
+  min-height: 95vh;
+}
+
+
+//
+
+
+/**
+ * Monokai theme
+ *
+ * Adapted from Wimer Hazenberg's TextMate theme of the same name
+ *
+ * @author Wimer Hazenberg
+ * @author Michael Fasani
+ * @author Craig Campbell
+ * @version 1.0.0
+ */
+ pre {
+  background: #272822;
+  word-wrap: break-word;
+  margin: 0px;
+  padding: 10px;
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+pre, code {
+  font-family: 'Monaco', courier, monospace;
+}
+
+pre .comment {
+  color: #75715E;
+}
+
+pre .constant {
+  color: #AE81FF;
+}
+
+pre .storage {
+  color: #66D9EF;
+}
+
+pre .string, pre .comment.docstring {
+  color: #E6DB74;
+}
+
+pre .support.tag {
+  color: #fff;
+}
+
+pre .keyword {
+  /* @todo some keywords use this light blue, most use the pink */
+  /*color: #66D9EF;*/
+  color: #F92672;
+}
+
+pre .selector {
+  color: #F92672;
+}
+
+pre .inherited-class {
+  font-style: italic;
+}
+
+pre .operator, pre .support.tag-name , pre .entity.tag {
+  color: #F92672;
+}
+
+pre .entity, pre .support.attribute, pre .entity.attribute {
+  color: #A6E22E;
+}
+
+pre .support, *[data-language="c"] .function.call {
+  color: #66D9EF;
+}
+
+*[data-language="html"] .support.operator {
+  color: #fff;
+}
+
+pre .css-property, pre .storage.function {
+  font-style: italic;
+}
+
+pre .variable.global, pre .variable.class, pre .variable.instance {
+  color: #A6E22E;
 }
