@@ -71,9 +71,17 @@
         border-left: rgba(229, 229, 229, 0.4) 1px solid;
         padding: 8px 16px;
         cursor: copy;
-  
+        flex-shrink: 0;
+
+
         &_image {
           margin: 0 9px 0 3px;
+         
+        }
+
+        &_text {
+          margin-left: 9px;
+         
         }
   
         &:hover {
