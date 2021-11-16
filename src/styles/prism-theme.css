@@ -1,0 +1,18 @@
+.token.comment{     
+    color:#75715e;
+}
+/* .token.block-comment, .token.prolog, .token.doctype, .token.cdata  */
+
+.token.keyword,.token.operator{
+    color: #f92672;
+}
+/* .token.selector, .token.important, .token.atrule, , .token.builtin  */
+
+.token.string {
+    color: #e6db74;
+}
+
+/*  .token.char, .token.attr-value, .token.regex, .token.variable */
+.token.number {
+    color: #ae81ff;
+}
