@@ -32,7 +32,7 @@ const CodeSample = ({ id, title, desc, subdesc }: Props) => {
         const filePath = `/demoCode/${id}-${lang}.${fileExt}`;
 
         fetch(filePath).then((response) => response.text()).then(data => {
-            const formattedCode = data.replaceAll('&lt;', '<').replaceAll("&gt;", '>')
+            const formattedCode = data.replaceAll("&lt;", "<").replaceAll("&gt;", ">")
             setjsContent(formattedCode)
             prism.highlightAll()
         }
