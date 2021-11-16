@@ -35,3 +35,14 @@
         }
     }
 }
+
+@media screen and (max-width: 480px) {
+    .hero-container {
+        flex-direction: column;
+        padding: 80px 16px;
+
+            h1 {
+                font-size: 32px !important;
+            }
+    }
+}

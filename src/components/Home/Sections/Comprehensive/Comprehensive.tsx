@@ -6,10 +6,10 @@ import styleSections from "../Sections.module.scss";
 import TextContent from "../TextContent/TextContent";
 
 const Comprehensive: React.FC = () => (
-    <section className={`${styleSections["main-page-row"]}`}>
-        <div className={`${styles.rowContainer}`}>
-            <div className={`${styles.singleContainer}`}>
-                <div className={`${styles.libraryIcon}`}>
+    <section className={styleSections["main-page-row"]}>
+        <div className={styles.rowContainer}>
+            <div className={styles.singleContainer}>
+                <div className={styles.libraryIcon}>
                     <Image
                         src={data_comprehensive.icon}
                         width={64}
