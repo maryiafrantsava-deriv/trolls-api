@@ -1,11 +1,6 @@
 import DocsLayout from "components/Documentation/Layout/DocsLayout";
-<<<<<<< HEAD
-import QuickStart from "components/QuickStart/QuickStart";
-import CodeSample from "../../components/common/CodeSample/CodeSample";
-=======
 import QuickStartIntro from "components/Documentation/QuickStartIntro/QuickStartIntro";
->>>>>>> master
-
+import CodeSample from "../../components/common/CodeSample/CodeSample";
 type PageComponentWithLayout = React.FC & {
     Layout: React.FC;
 };
@@ -40,18 +35,14 @@ const codeSampleData = [
 
 ]
 const Docs: PageComponentWithLayout = () => {
-<<<<<<< HEAD
     return (
         <div>
-            <QuickStart />
+            <QuickStartIntro />
             {codeSampleData.map((data, index) =>
                 <CodeSample key={index} id={data.id} title={data.title} desc={data.description} subdesc={data.subdescription} />
             )}
         </div>
     );
-=======
-    return <QuickStartIntro />;
->>>>>>> master
 };
 
 Docs.Layout = DocsLayout;
