@@ -32,7 +32,8 @@ const CodeSample = ({ id, title, desc, subdesc }: Props) => {
         const filePath = `/demoCode/${id}-${lang}.${fileExt}`;
 
         fetch(filePath).then((response) => response.text()).then(data => {
-            setjsContent(data)
+            const formattedCode = data.replaceAll("&lt;", "<").replaceAll("&gt;", ">")
+            setjsContent(formattedCode)
             prism.highlightAll()
         }
         )
@@ -63,8 +64,8 @@ const CodeSample = ({ id, title, desc, subdesc }: Props) => {
 
                     </div>
                 </div>
-                <div className={styles.pre}>
-                    <pre><code className={`language-${lang}`}>{jsContent}</code></pre>
+                <div>
+                    <pre className={styles.pre}><code className={`language-${lang}`}>{jsContent}</code></pre>
                 </div>
 
             </div>
