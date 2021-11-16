@@ -4,7 +4,7 @@ import { BenefitSection } from "../components/BenefitsSection/BenefitSection";
 
 const Home = () => {
     return (
-        <div>
+        <div id="home-page">
             <Comprehensive id="derivApi" />
             <BenefitSection />
             <Comprehensive id="comprehensive" />
