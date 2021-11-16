@@ -36,12 +36,12 @@ const codeSampleData = [
 ]
 const Docs: PageComponentWithLayout = () => {
     return (
-        <div>
+        <>
             <QuickStartIntro />
             {codeSampleData.map((data, index) =>
                 <CodeSample key={index} id={data.id} title={data.title} desc={data.description} subdesc={data.subdescription} />
             )}
-        </div>
+        </>
     );
 };
 

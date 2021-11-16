@@ -1,7 +1,6 @@
 import "styles/globals.scss";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-// import "prismjs/themes/prism-tomorrow.css";
 import "../../src/styles/prism-theme.css"
 import Header from "components/common/Header/Header";
 import Footer from "components/common/Footer";
