@@ -6,9 +6,9 @@ import DerivApi from "components/Home/Sections/DerivApi/DerivApi";
 const Home = () => {
     return (
         <div>
-            <DerivApi id="derivApi" />
+            <DerivApi />
             <BenefitSection />
-            <Comprehensive id="comprehensive" />
+            <Comprehensive />
             <FeedbackSection id="home" />
         </div>
     );
