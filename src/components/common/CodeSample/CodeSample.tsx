@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 const prism = require("prismjs")
 require("prismjs/components/prism-markup-templating.js")
-
+require("prismjs/components/prism-javascript");
 require("prismjs/components/prism-python");
 require("prismjs/components/prism-csharp");
 require("prismjs/components/prism-php");
@@ -64,9 +64,7 @@ const CodeSample = ({ id, title, desc, subdesc }: Props) => {
                     </div>
                 </div>
                 <div className={styles.pre}>
-
-                    <pre className={`language-${lang}`}><code>{jsContent}</code></pre>
-
+                    <pre><code className={`language-${lang}`}>{jsContent}</code></pre>
                 </div>
 
             </div>
