@@ -1,5 +1,7 @@
 .accordion {
-    padding-left: 75px;
+    @media (min-width: 992px) {
+        padding-left: 75px;
+    }
 
     .accordion-wrapper {
         display: flex;
@@ -19,7 +21,13 @@
             background-color: #ffffff;
             transition: 0.2s;
             font-weight: 700;
+            @media (max-width: 992px) {
+                padding: 16px 28px;
+            }
 
+            > div {
+                margin-right: 16px;
+            }
             .accordion-text {
                 font-size: 16px;
                 margin-right: 16px;
@@ -37,6 +45,7 @@
 
         .accordion-header :nth-child(2) {
             margin-left: auto !important;
+            flex-shrink: 0;
         }
 
         .accordion-panel {
@@ -54,6 +63,10 @@
                 padding: 2px 4px;
                 border: 1px solid #eaeced;
                 font-family: ibm plex sans, sans-serif;
+            }
+
+            ol {
+                margin-left: 20px;
             }
         }
     }
