@@ -1,4 +1,6 @@
 import "styles/globals.scss";
+
+const prism = require("prismjs")
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import "../../src/styles/prism-theme.css"
@@ -6,6 +8,7 @@ import Header from "components/common/Header/Header";
 import Footer from "components/common/Footer";
 import { PageComponentWithLayout } from "../types";
 import CanvasMenu from "components/common/CanvasMenu/CanvasMenu";
+
 
 const EmptyLayout: React.FC = ({ children }) => <div id="what?">{children}</div>;
 

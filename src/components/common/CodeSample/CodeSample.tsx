@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import CodeContent from '../CodeContent/CodeContent'
 const prism = require("prismjs")
-require("prismjs/components/prism-markup-templating.js")
-require("prismjs/components/prism-javascript");
-require("prismjs/components/prism-python");
-require("prismjs/components/prism-csharp");
-require("prismjs/components/prism-php");
+
 
 import styles from "./CodeSample.module.scss";
 
@@ -70,19 +67,11 @@ const CodeSample = ({ id, title, desc, subdesc }: Props) => {
                         </select>
                     </p>
                     <div className={styles.copy_button} onClick={handleCopyButtonClick}>
-
                         <Image className={styles.copy_button_image} src="/copy.svg" width="16" height="16" alt="copy code icon" />
-
                         <span className={styles.copy_button_text}> Copy </span>
-
-
-
                     </div>
                 </div>
-                <div>
-                    <pre className={styles.pre}><code className={`language-${lang}`}>{jsContent}</code></pre>
-                </div>
-
+                <CodeContent lang={lang} data={jsContent} />
             </div>
         </div>
     )
