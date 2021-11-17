@@ -7,7 +7,6 @@ import Footer from "components/common/Footer";
 import { PageComponentWithLayout } from "../types";
 import CanvasMenu from "components/common/CanvasMenu/CanvasMenu";
 
-
 const EmptyLayout: React.FC = ({ children }) => <div id="what?">{children}</div>;
 
 type MyApp = AppProps & {
