@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import CodeContent from '../CodeContent/CodeContent'
+import CodeContent from "../CodeContent/CodeContent"
 const prism = require("prismjs")
 
 
