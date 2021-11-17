@@ -22,10 +22,6 @@ const CodeSample = ({ id, title, desc, subdesc }: Props) => {
     const [jsContent, setjsContent] = useState(" ");
     const [lang, setLang] = useState("javascript");
 
-
-
-
-
     useEffect(() => {
         const fileExtension: any = { javascript: "js", csharp: "cs", php: "php", python: "py" }
         const fileExt = fileExtension[`${lang}`];
@@ -38,6 +34,25 @@ const CodeSample = ({ id, title, desc, subdesc }: Props) => {
         }
         )
     }, [id, lang])
+
+
+    const fallbackCopyTextToClipboard = () => {
+        let dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        dummy.value = jsContent;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+    }
+
+    const handleCopyButtonClick = () => {
+        if (!navigator.clipboard) {
+            fallbackCopyTextToClipboard();
+            return;
+        }
+        navigator.clipboard.writeText(jsContent);
+    }
+
 
     return (
         <div className={styles.codeBlock}>
@@ -54,7 +69,7 @@ const CodeSample = ({ id, title, desc, subdesc }: Props) => {
                             <option value="python">Python</option>
                         </select>
                     </p>
-                    <div className={styles.copy_button}>
+                    <div className={styles.copy_button} onClick={handleCopyButtonClick}>
 
                         <Image className={styles.copy_button_image} src="/copy.svg" width="16" height="16" alt="copy code icon" />
 
