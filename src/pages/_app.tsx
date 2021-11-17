@@ -1,6 +1,4 @@
 import "styles/globals.scss";
-
-const prism = require("prismjs")
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import "../../src/styles/prism-theme.css"

@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import CodeContent from "../CodeContent/CodeContent"
-const prism = require("prismjs")
-
-
 import styles from "./CodeSample.module.scss";
 
 type Props = {
@@ -12,7 +9,6 @@ type Props = {
     desc?: string,
     subdesc?: string
 }
-
 
 const CodeSample = ({ id, title, desc, subdesc }: Props) => {
 
@@ -27,7 +23,7 @@ const CodeSample = ({ id, title, desc, subdesc }: Props) => {
         fetch(filePath).then((response) => response.text()).then(data => {
             const formattedCode = data.replaceAll("&lt;", "<").replaceAll("&gt;", ">")
             setjsContent(formattedCode)
-            prism.highlightAll()
+
         }
         )
     }, [id, lang])
