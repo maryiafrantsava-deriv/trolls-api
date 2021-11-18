@@ -1,15 +1,18 @@
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
+import { promises as fs } from "fs";
+import path from "path";
 import DocsLayout from "components/Documentation/Layout/DocsLayout";
 import Accordion from "components/common/Accordion/Accordion";
 import AccordionItem from "components/common/Accordion/AccordionItem";
 import CodeContent from "components/common/CodeContent/CodeContent";
 import styles from "components/common/Accordion/Accordion.module.scss";
-import { PATHS, url } from "utils";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { PATHS } from "utils";
 
 export const getStaticProps: GetStaticProps = async () => {
-    const res = await fetch(`${url}/demoCode/server-status-notification.js`);
-    const js_content = await res.text();
+    const js_directory = path.join(process.cwd(), "public", "/demoCode");
+    const js_path = path.join(js_directory, "server-status-notification.js");
+    const js_content = await fs.readFile(js_path, "utf8");
 
     return {
         props: { js_content },

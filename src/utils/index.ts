@@ -9,6 +9,3 @@ export const PATHS = {
     JSON_SCHEMAS: "/docs/json-schemas",
     BUG_BOUNTY: "/docs/bug-bounty",
 };
-
-const dev = process.env.NODE_ENV !== "production";
-export const url = dev ? "http://localhost:3000" : "https://trolls-api.vercel.app/";
