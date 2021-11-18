@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { PageComponentWithLayout } from "../../types";
 import Link from "next/link";
 import DocsLayout from "components/Documentation/Layout/DocsLayout";
 import Accordion from "components/common/Accordion/Accordion";
