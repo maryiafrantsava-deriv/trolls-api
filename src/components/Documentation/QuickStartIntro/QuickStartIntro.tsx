@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PATHS } from "utils";
 import styles from "./QuickStartIntro.module.scss";
+import common from "../DocsCommon.module.scss"
 
 const quick_start_steps: Array<(string | JSX.Element)[]> = [
     [
@@ -29,7 +30,7 @@ const quick_start_steps: Array<(string | JSX.Element)[]> = [
 
 const QuickStartIntro: React.FC = () => (
     <>
-        <h1 className={styles["doc-main-title"]}>Quickstart to Deriv API</h1>
+        <h1 className={common["doc-main-title"]}>Quickstart to Deriv API</h1>
         <div className={styles["quick-start-intro"]}>
             <p>
                 On this page, you’ll find code samples in various programming languages showing you how to work with the
@@ -42,7 +43,7 @@ const QuickStartIntro: React.FC = () => (
                 </Link>
                 .
             </p>
-            <h3 className={`${styles["api-sub-title"]} bold`}>Before you begin</h3>
+            <h3 className={`${common["api-sub-title"]} bold`}>Before you begin</h3>
             <ul className="bullet">
                 {quick_start_steps.map((step, i) => (
                     <li key={i}>{step}</li>
