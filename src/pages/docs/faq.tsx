@@ -1,12 +1,24 @@
+import { useEffect, useState } from "react";
 import { PageComponentWithLayout } from "../../types";
 import Link from "next/link";
 import DocsLayout from "components/Documentation/Layout/DocsLayout";
 import Accordion from "components/common/Accordion/Accordion";
 import AccordionItem from "components/common/Accordion/AccordionItem";
+import CodeContent from "components/common/CodeContent/CodeContent";
 import styles from "components/common/Accordion/Accordion.module.scss";
 import { PATHS } from "utils";
 
 const FAQ: PageComponentWithLayout = () => {
+    const [js_content, setJsContent] = useState("");
+
+    useEffect(() => {
+        fetch("/demoCode/server-status-notification.js")
+            .then(response => response.text())
+            .then(data => {
+                setJsContent(data);
+            });
+    }, []);
+
     return (
         <div className="with-bg">
             <h1 className="doc-main-title">FAQ</h1>
@@ -125,6 +137,7 @@ const FAQ: PageComponentWithLayout = () => {
                         This JavaScript code opens a WebSocket and makes a subscription for server status notifications.
                         When a message is received, it sends the website status message, if available:
                     </p>
+                    <CodeContent lang="javascript" data={js_content} />
                 </AccordionItem>
                 <AccordionItem title="How do I get help?">
                     Visit our <Link href="https://binary.vanillacommunity.com/">dev forum</Link> or email
