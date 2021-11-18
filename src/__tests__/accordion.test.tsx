@@ -39,13 +39,13 @@ describe("Accordion", () => {
         expect(getByRole("img")).toHaveClass("accordion-button--plus");
     });
     it("toggles accordion on click", () => {
-        const mockOnClick = jest.fn();
+        const mock_on_click = jest.fn();
         const { container, getByRole, getByTestId } = render(<AccordionItem title=""></AccordionItem>);
-        const clickIndicator = getByTestId("accordion-header");
+        const click_indicator = getByTestId("accordion-header");
 
-        clickIndicator.onclick = mockOnClick;
-        fireEvent.click(clickIndicator);
-        expect(mockOnClick).toHaveBeenCalledTimes(1);
+        click_indicator.onclick = mock_on_click;
+        fireEvent.click(click_indicator);
+        expect(mock_on_click).toHaveBeenCalledTimes(1);
         expect(container.querySelector(".accordion-panel")).toBeInTheDocument();
         expect(getByRole("img")).toHaveClass("accordion-button--minus");
     });

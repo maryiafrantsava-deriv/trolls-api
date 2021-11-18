@@ -6,19 +6,19 @@ import Accordion from "components/common/Accordion/Accordion";
 import AccordionItem from "components/common/Accordion/AccordionItem";
 import CodeContent from "components/common/CodeContent/CodeContent";
 import styles from "components/common/Accordion/Accordion.module.scss";
-import { PATHS } from "utils";
+import { PATHS, url } from "utils";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 
-const FAQ: PageComponentWithLayout = () => {
-    const [js_content, setJsContent] = useState("");
+export const getStaticProps: GetStaticProps = async () => {
+    const res = await fetch(`${url}/demoCode/server-status-notification.js`);
+    const js_content = await res.text();
 
-    useEffect(() => {
-        fetch("/demoCode/server-status-notification.js")
-            .then(response => response.text())
-            .then(data => {
-                setJsContent(data);
-            });
-    }, []);
+    return {
+        props: { js_content },
+    };
+};
 
+const FAQ: InferGetStaticPropsType<typeof getStaticProps> = ({ ...props }) => {
     return (
         <div className="with-bg">
             <h1 className="doc-main-title">FAQ</h1>
@@ -137,7 +137,7 @@ const FAQ: PageComponentWithLayout = () => {
                         This JavaScript code opens a WebSocket and makes a subscription for server status notifications.
                         When a message is received, it sends the website status message, if available:
                     </p>
-                    <CodeContent lang="javascript" data={js_content} />
+                    <CodeContent lang="javascript" data={props.js_content} />
                 </AccordionItem>
                 <AccordionItem title="How do I get help?">
                     Visit our <Link href="https://binary.vanillacommunity.com/">dev forum</Link> or email
