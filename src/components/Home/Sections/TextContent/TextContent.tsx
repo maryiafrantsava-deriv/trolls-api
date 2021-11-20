@@ -10,7 +10,7 @@ type DataType = {
 
 type TextContentPropsType = {
     data: DataType,
-  };
+};
 
 const TextContent: React.FC<TextContentPropsType> = ({ data }) => (
     <div id="textContent" className={styleSections.textContent}>

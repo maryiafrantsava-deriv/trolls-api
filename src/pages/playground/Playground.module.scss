@@ -1,3 +1,5 @@
+@import "../../styles/colors.module";
+
 .playground {
     display: flex;
     justify-content: center;
@@ -49,7 +51,7 @@
     .playground-box {
         border-radius: 6px;
         border: none;
-        background-color: #151717;
+        background-color: $black-color-1;
         padding: 24px 24px 82px;
         margin-bottom: 40px;
         position: relative;
@@ -87,7 +89,7 @@
         display: flex;
         flex-wrap: nowrap;
         border-radius: 4px;
-        background-color: #151717;
+        background-color: $black-color-1;
         margin-bottom: 24px;
         padding: 24px;
 
@@ -105,7 +107,8 @@
             font-size: 14px;
             line-height: 1.43;
             border: none;
-            color: #333;
+            color: $black-color;
+            margin: 0 24px 0 0;
 
             @media (max-width: 992px) and (max-width: 640px) {
                 margin-top: 24px;
@@ -147,18 +150,18 @@
             margin-bottom: 24px;
         }
 
-        a .cta-button {
+        a > button {
             cursor: pointer;
-            background-color: #151717;
+            background-color: $black-color-1;
             font-size: 14px;
             font-weight: 700;
             padding: 10px 16px;
             border-radius: 4px;
-            border: solid 2px #6e6e6e;
-            color: #fff;
+            border: solid 2px $dark-grey-color-1;
+            color: $white-color;
 
             &:hover {
-                background-color: #999999;
+                background-color: $dark-grey-color-2;
             }
         }
 
@@ -168,6 +171,7 @@
             line-height: 1.43;
             text-align: center;
             color: #c2c2c2;
+            margin-bottom: 16px;
         }
     }
 }
