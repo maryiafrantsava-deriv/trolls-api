@@ -1,5 +1,8 @@
 module.exports = {
+    collectCoverage: true,
     collectCoverageFrom: ["**/*.{js,jsx,ts,tsx}", "!**/*.d.ts", "!**/node_modules/**"],
+    coverageReporters: ["lcov"],
+    coverageDirectory: "./coverage/",
     moduleNameMapper: {
         /* Handle CSS imports (with CSS modules)
       https://jestjs.io/docs/webpack#mocking-css-modules */
