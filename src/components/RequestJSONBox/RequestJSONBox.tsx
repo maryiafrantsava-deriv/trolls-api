@@ -4,6 +4,7 @@ import { api } from "appid";
 import ConsoleMessage from "components/ConsoleMessage/ConsoleMessage";
 import data_request_json_box from "utils/data-request-json-box";
 import Title from "components/common/Title";
+import Button from "components/common/Button/Button";
 
 type RequestJSONBoxPropTypes = {
     request_example?: string;
@@ -14,7 +15,7 @@ type RequestJSONBoxPropTypes = {
 const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({ request_example, handleChange, isAppRegistration }) => {
     const [messages, setMessages] = useState([] as Array<any>);
     const request_input = useRef<HTMLTextAreaElement>(null);
-    const{ title, buttonReset, buttonSend } = data_request_json_box;
+    const{ title, buttonReset } = data_request_json_box;
     const sendRequest = () => {
         const request = request_input.current && JSON.parse(request_input.current?.value);
         request && api.send(request)
@@ -42,7 +43,12 @@ const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({ request_example, ha
                     {buttonReset}
                 </div>
                 <div className={style["btn-submit"]}>
-                    {buttonSend(sendRequest)}
+                    <Button 
+                        id="playground-send-btn"
+                        className={style["btn-submit"]}
+                        text={"Send Request"}
+                        clickHandler={sendRequest}
+                    />
                 </div>
             </div>
             <div id="playground-console" className={style["playground-console"]}>
