@@ -26,14 +26,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Get master
-        run: git fetch origin master
-      - name: Install dependencies
-        run:  npm ci
-      - name: Install Jest globally
-        run:  sudo npm install -g jest
-      - name: Run Tests
-        run:  npm run test
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         env:
