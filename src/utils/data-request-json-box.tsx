@@ -5,7 +5,7 @@ import { MouseEventHandler } from "react";
 type RequestJsonBoxPropsType = {
     title: Array<string>;
     buttonReset: Array<JSX.Element>;
-    buttonSend?: Function;
+    buttonSend: Function;
 }
 
 const data_request_json_box: RequestJsonBoxPropsType = {
@@ -15,7 +15,7 @@ const data_request_json_box: RequestJsonBoxPropsType = {
             <Button text={"Reset Connection"} />
         </a>
     </Link> ],
-    buttonSend: (sendRequest: MouseEventHandler<HTMLButtonElement> | undefined): JSX.Element => {
+    buttonSend: (sendRequest: MouseEventHandler<HTMLButtonElement>): JSX.Element => {
         return <Button key="btn-submit" id="playground-send-btn" text={"Send Request"} clickHandler={sendRequest} />;
         ;
     },
