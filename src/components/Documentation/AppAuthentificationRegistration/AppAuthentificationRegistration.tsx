@@ -1,9 +1,8 @@
 import Title from "components/common/Title";
 import TextContent from "components/Home/Sections/TextContent";
 import React from "react";
-import data_get_api_token from "utils/data-app-registration";
+import data_get_api_token, { data_register_your_app }  from "utils/data-app-registration";
 import styles from "./AppAuthentificationRegistration.module.scss";
-import { data_register_your_app } from "utils/data-app-registration";
 import Input from "components/common/InputList";
 import TokenInputField from "components/TokenInputField/TokenInputField";
 import RequestJSONBox from "components/RequestJSONBox";
@@ -48,7 +47,7 @@ const AppAuthentificationRegistration: React.FC = () => {
             </div>
             <TokenInputField 
                 isAppRegistration={true}
-                label={textFieldset}
+                label={textFieldset.toString()}
             />
             <div className={styles["horizontal-separator-grey"]}></div>
             <form id={styles.frmNewApplication}>

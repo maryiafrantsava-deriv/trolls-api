@@ -3,7 +3,7 @@ import Button from "../common/Button/Button";
 
 type TokenInputFieldPropsType = {
     isAppRegistration?: boolean;
-    label?: Array<String>;
+    label?: string;
 };
 
 const TokenInputField:React.FC<TokenInputFieldPropsType> = ({isAppRegistration, label}) => {
