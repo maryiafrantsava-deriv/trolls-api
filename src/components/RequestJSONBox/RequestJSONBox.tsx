@@ -47,7 +47,7 @@ const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({ request_example, ha
                         id="playground-send-btn"
                         className={style["btn-submit"]}
                         text={"Send Request"}
-                        clickHandler={sendRequest}
+                        clickHandler={ sendRequest }
                     />
                 </div>
             </div>
