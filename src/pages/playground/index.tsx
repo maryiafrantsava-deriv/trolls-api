@@ -32,7 +32,9 @@ const PlayGround: React.FC = () => {
                                 <div className={style["vertical-separator"]}></div>
                                 <div className={style["cta"]}>
                                     <Title headerSize="h3" className={style["title"]}>{data_get_api_token.textFocus}</Title>
-                                    {data_get_api_token.button}
+                                    <div className={style["cta-button"]}>
+                                        {data_get_api_token.button}
+                                    </div>
                                 </div>
                             </div>
                             <RequestJSONBox request_example={request} handleChange={handleTextAreaInput} />

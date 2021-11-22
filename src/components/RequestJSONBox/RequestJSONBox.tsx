@@ -1,10 +1,10 @@
-import style from "../../pages/playground/Playground.module.scss";
-import Button from "components/common/Button/Button";
+import style from "./RequestJSONBox.module.scss";
 import React, { useRef, useState } from "react";
 import { api } from "appid";
 import ConsoleMessage from "components/ConsoleMessage/ConsoleMessage";
 import data_request_json_box from "utils/data-request-json-box";
 import Title from "components/common/Title";
+import Button from "components/common/Button/Button";
 
 type RequestJSONBoxPropTypes = {
     request_example?: string;
@@ -15,15 +15,13 @@ type RequestJSONBoxPropTypes = {
 const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({ request_example, handleChange, isAppRegistration }) => {
     const [messages, setMessages] = useState([] as Array<any>);
     const request_input = useRef<HTMLTextAreaElement>(null);
-    const{ title } = data_request_json_box;
-
+    const{ title, buttonReset } = data_request_json_box;
     const sendRequest = () => {
         const request = request_input.current && JSON.parse(request_input.current?.value);
         request && api.send(request)
             .then((res: any) => setMessages([...messages, {body: request, type: "req"}, {body: res, type: "res"}]))
             .catch((err: any) => setMessages([...messages, {body: request, type: "req"}, {body: err, type: "err"}]))
     }
-
     return (
         <div className={isAppRegistration ? style["form-content"] : style["playground-box"]}>
             {isAppRegistration ? 
@@ -40,13 +38,18 @@ const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({ request_example, ha
                 spellCheck={isAppRegistration ? false : undefined}
             />
             <div className={style["json-btn-wrapper"]}>
-                <Button className={style["btn-reset"]} text={"Reset Connection"} />
-                <Button 
-                    id="playground-send-btn" 
-                    className={style["btn-submit"]} 
-                    text={"Send Request"}
-                    clickHandler={sendRequest} 
-                />
+                <div className={isAppRegistration ? `${style["btn-reset"]} ${style["gray-btn-submit"]}` 
+                    : `${style["btn-reset"]} ${style["btn-reset-playground"]}`}>
+                    {buttonReset}
+                </div>
+                <div className={style["btn-submit"]}>
+                    <Button 
+                        id="playground-send-btn"
+                        className={style["btn-submit"]}
+                        text={"Send Request"}
+                        clickHandler={ sendRequest }
+                    />
+                </div>
             </div>
             <div id="playground-console" className={style["playground-console"]}>
                 {messages?.map((message, index) => <ConsoleMessage key={"message"+index} message={message}></ConsoleMessage>)}
