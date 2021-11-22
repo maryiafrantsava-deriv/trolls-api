@@ -10,7 +10,7 @@ type RequestJSONBoxPropTypes = {
     request_example?: string;
     handleChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
     isAppRegistration?: boolean;
-}
+};
 
 const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({ request_example, handleChange, isAppRegistration }) => {
     const [messages, setMessages] = useState([] as Array<any>);
