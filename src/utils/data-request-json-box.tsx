@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Button from "components/common/Button/Button";
-import { MouseEventHandler } from "react";
 
 type RequestJsonBoxPropsType = {
     title: Array<string>;

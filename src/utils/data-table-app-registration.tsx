@@ -1,4 +1,3 @@
-
 export type DataTableAppRegistrationPropTypes = {
     id: number;
     label: string;

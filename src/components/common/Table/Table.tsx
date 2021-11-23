@@ -13,14 +13,12 @@ export const Table: React.FC<TablePropTypes>  = ({data_table}) => {
         const isLastChild = idx === item.id - 1; 
 
         return (
-            <>
-                <th
-                    key={ item.id } 
-                    colSpan={ isLastChild ? 2 : undefined }
-                    className={styles["flex-tr-child"]}>
-                    { item.label }
-                </th>       
-            </>
+            <th
+                key={ item.id } 
+                colSpan={ isLastChild ? 2 : undefined }
+                className={styles["flex-tr-child"]}>
+                { item.label }
+            </th>       
         );
     });
 
