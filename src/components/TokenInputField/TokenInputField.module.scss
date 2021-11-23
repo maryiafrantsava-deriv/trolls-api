@@ -22,9 +22,9 @@
 }
 
 .api-token-fieldset {
-        margin-bottom: 42px;
-        width: 100%;
-        border: none;
+    margin-bottom: 42px;
+    width: 100%;
+    border: none;
 
     .api-token-wrapper {
         width: 100%;
@@ -43,8 +43,8 @@
             background-color: $white-color;
             margin-bottom: 0;
             padding: 4px;
-        
-            @media (max-width: 1500px){
+
+            @media (max-width: 1500px) {
                 left: 6.8vw;
             }
         }
