@@ -87,3 +87,13 @@ h2 {
     text-align: center;
     color: #333333;
 }
+
+.not_found-wrapper {
+    height: 93vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: red;
+}
