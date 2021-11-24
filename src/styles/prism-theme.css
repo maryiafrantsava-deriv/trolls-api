@@ -2,8 +2,13 @@
     color: #75715e;
 }
 
+.operator-php{
+    display:inline-block;
+}
+
 .token.keyword,
-.token.operator {
+.token.operator,
+.operator-php::first-letter {
     color: #f92672;
 }
 
@@ -15,7 +20,8 @@
     color: #ae81ff;
 }
 
-.token.keyword-function {
-    color: #66d9ef;
+.storage-function{
     font-style: italic;
+    color: #66d9ef !important;
 }
+
