@@ -3,7 +3,7 @@ import style from "./SelectRequestInput.module.scss";
 
 const SelectRequestInput: React.FC<{ handleChange: React.ChangeEventHandler<HTMLSelectElement> }> = ({ handleChange }) => {
     const default_value: string = "Select API Call - Version 3";
-
+    playground_requests.sort((a, b) => a.title.localeCompare(b.title))
     return (
         <fieldset className={style["api-request"]}>
             <select className={style["dark"]} onChange={handleChange} defaultValue={default_value}>
