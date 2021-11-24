@@ -12,6 +12,7 @@
         will-change: left;
         left: -254px;
         z-index: 1;
+        padding: 24px 16px 24px 20px;
 
         .menu-wrapper {
             display: flex;
@@ -21,6 +22,7 @@
             font-size: 14px;
             font-weight: bold;
             margin-bottom: 8px;
+            cursor: pointer;
 
             &:before {
                 content: "";
@@ -60,7 +62,7 @@
             .menu-panel {
                 display: none;
                 height: 0;
-                padding: 0px 16px 10px;
+                padding: 0px 16px 10px 25px;
                 transition: all 0.5s ease;
 
                 &.show-dropdown {
@@ -95,6 +97,7 @@
 
                 .selected {
                     background-color: rgba(240, 241, 243, 0.64);
+                    border-left: 4px solid #FF0000;
                     border-radius: 4px;
                     font-weight: bold;
                     opacity: 1;

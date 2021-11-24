@@ -1,7 +1,7 @@
 @import "../../styles/colors.module";
 
 .playground-content {
-    padding: 80px 5px;
+    padding: 180px 5px;
     min-height: 95vh;
 
     .header-title h1 {
@@ -288,5 +288,11 @@
         @media (max-width: 480px) {
             font-size: 14px;
         }
+    }
+}
+
+@media (max-width: 992px) {
+    .playground-content {
+        padding: 80px 5px;
     }
 }
