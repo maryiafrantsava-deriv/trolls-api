@@ -17,7 +17,7 @@ const TextContent: React.FC<TextContentPropsType> = ({ data }) => (
         <Title className="" headerSize="h1">{data.title}</Title>
         <div className={styleSections.subheader}>
             <span>{data.textFirstPart}</span>
-            {data.textSecondPart.length > 1 ? (
+            {data.textSecondPart.length >= 1 ? (
                 <span>{data.textSecondPart}</span>
             ) : null}
         </div>
