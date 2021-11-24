@@ -7,12 +7,12 @@ type RequestJsonBoxPropsType = {
 }
 
 const data_request_json_box: RequestJsonBoxPropsType = {
-    title: [ "Request JSON" ],
-    buttonReset: [ <Link href={"javascript:;"} key="btn-reset">
+    title: ["Request JSON"],
+    buttonReset: [<Link href={"javascript:;"} key="btn-reset">
         <a id="playground-reset-btn">
             <Button text={"Reset Connection"} />
         </a>
-    </Link> ],
+    </Link>],
 };
 
 export default data_request_json_box;
