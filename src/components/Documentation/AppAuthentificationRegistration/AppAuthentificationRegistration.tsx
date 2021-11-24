@@ -6,6 +6,11 @@ import styles from "./AppAuthentificationRegistration.module.scss";
 import Input from "components/common/InputList";
 import TokenInputField from "components/TokenInputField/TokenInputField";
 import RequestJSONBox from "components/RequestJSONBox";
+import Table from "components/common/Table";
+import { data_table_app_registration } from "utils/data-table-app-registration";
+import Scopes from "../Scopes";
+import { data_scopes } from "utils/data-scopes";
+import Button from "components/common/Button/Button";
 
 export type AppAuthentificationRegistrationPropsType = {
     title: Array<string>;
@@ -45,7 +50,7 @@ const AppAuthentificationRegistration: React.FC = () => {
                     {button}
                 </div>
             </div>
-            <TokenInputField 
+            <TokenInputField
                 isAppRegistration={true}
                 label={textFieldset.toString()}
             />
@@ -56,10 +61,13 @@ const AppAuthentificationRegistration: React.FC = () => {
                         <Title headerSize="h2" className={styles.titleRegister}>{titleRegister}</Title>
                         <Input inputsData={data_register_your_app} />
                     </fieldset>
+                    <Scopes dataScopes={data_scopes}/>
+                    <Button id="btnRegister" className={styles["primary-btn-submit"]} text={"Register"} />
                 </div>
             </form>
             <div className={styles["horizontal-separator-grey"]}></div>
             <div className={styles["request-container"]}>
+                <Table data_table={data_table_app_registration} />
                 <fieldset className={styles["mb-0"]}>
                     <RequestJSONBox
                         isAppRegistration={true}

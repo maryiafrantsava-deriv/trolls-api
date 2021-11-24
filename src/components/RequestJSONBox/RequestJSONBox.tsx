@@ -1,4 +1,5 @@
 import style from "./RequestJSONBox.module.scss";
+import styles from "../../pages/playground/Playground.module.scss";
 import React, { useRef, useState } from "react";
 import { api } from "appid";
 import ConsoleMessage from "components/ConsoleMessage/ConsoleMessage";
@@ -43,7 +44,7 @@ const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({ request_example, ha
                     {buttonReset}
                 </div>
                 <div className={style["btn-submit"]}>
-                    <Button 
+                    <Button
                         id="playground-send-btn"
                         className={style["btn-submit"]}
                         text={"Send Request"}
@@ -51,7 +52,7 @@ const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({ request_example, ha
                     />
                 </div>
             </div>
-            <div id="playground-console" className={style["playground-console"]}>
+            <div id="playground-console" className={styles["playground-console"]}>
                 {messages?.map((message, index) => <ConsoleMessage key={"message"+index} message={message}></ConsoleMessage>)}
             </div>
         </div>
