@@ -1,9 +1,9 @@
 import Title from "components/common/Title";
 import TextContent from "components/Home/Sections/TextContent";
-import React from "react";
+import React, { useState } from "react";
 import data_get_api_token, { data_register_your_app }  from "utils/data-app-registration";
 import styles from "./AppAuthentificationRegistration.module.scss";
-import Input from "components/common/InputList";
+import InputList from "components/common/InputList";
 import TokenInputField from "components/TokenInputField/TokenInputField";
 import RequestJSONBox from "components/RequestJSONBox";
 import Table from "components/common/Table";
@@ -12,7 +12,7 @@ import Scopes from "../Scopes";
 import { data_scopes } from "utils/data-scopes";
 import Button from "components/common/Button/Button";
 
-export type AppAuthentificationRegistrationPropsType = {
+export type AppAuthentificationRegistrationPropTypes = {
     title: Array<string>;
     textFirstPart: Array<string>;
     textSecondPart: Array<string>;
@@ -22,8 +22,12 @@ export type AppAuthentificationRegistrationPropsType = {
     labelButton: Array<string>;
     titleRegister: Array<string>;
 }
+export type NewInputListTextPropTypes = {
+    [key: string]: string;
+}
 
-export type RegisterYourAppPropsType = {
+export type RegisterYourAppPropTypes = {
+    num: number;
     id: string;
     label: string;
     maxLength: number;
@@ -38,6 +42,38 @@ const AppAuthentificationRegistration: React.FC = () => {
         textFieldset, 
         titleRegister 
     } = data_get_api_token;
+
+    const [inputListText, setInputListText] = useState([{num: 0, id: "", text: ""}]);
+    const [isRegister, setRegister] = useState( false );
+
+    const newInputListText: NewInputListTextPropTypes = {};
+    inputListText.map((item) => {
+        newInputListText[(item.id).split("-")[1]] = item.text;
+    });
+    
+    const runRegister = ( event: any ) => {
+        event.preventDefault();
+        setRegister(true);
+    }
+
+    const handleChangeCheckboxScope = ( event: any ) => {
+
+    }
+
+    const editInputText = React.useCallback(( num: number, inputId: string, inputText: string ): void => {
+
+        let editInputText = {
+            num: num,
+            id: inputId,
+            text: inputText
+        };
+        const editInputListText = [
+            ...inputListText.slice(0, num ),
+            editInputText,
+            ...inputListText.slice(num + 1)
+        ];
+        setInputListText(editInputListText);
+    }, [inputListText, setInputListText])
 
     return (
         <>
@@ -59,10 +95,23 @@ const AppAuthentificationRegistration: React.FC = () => {
                 <div className={styles["form-content"]}>
                     <fieldset>
                         <Title headerSize="h2" className={styles.titleRegister}>{titleRegister}</Title>
-                        <Input inputsData={data_register_your_app} />
+                        <InputList 
+                            inputsData={data_register_your_app} 
+                            inputListText={inputListText}
+                            setInputListText={setInputListText}
+                            handleEditInputText={editInputText}
+                        />
                     </fieldset>
-                    <Scopes dataScopes={data_scopes}/>
-                    <Button id="btnRegister" className={styles["primary-btn-submit"]} text={"Register"} />
+                    <Scopes 
+                        dataScopes={data_scopes}
+                        handleChange={ handleChangeCheckboxScope }
+                    />
+                    <Button 
+                        id="btnRegister" 
+                        className={styles["primary-btn-submit"]} 
+                        text={"Register"} 
+                        clickHandler={ (event) => runRegister(event) }
+                    />
                 </div>
             </form>
             <div className={styles["horizontal-separator-grey"]}></div>
@@ -71,6 +120,8 @@ const AppAuthentificationRegistration: React.FC = () => {
                 <fieldset className={styles["mb-0"]}>
                     <RequestJSONBox
                         isAppRegistration={true}
+                        newInputListText={newInputListText}
+                        isRegister={isRegister}
                     />
                 </fieldset>
             </div>
@@ -78,5 +129,5 @@ const AppAuthentificationRegistration: React.FC = () => {
     )
 };
 
-export default AppAuthentificationRegistration;
+export default React.memo(AppAuthentificationRegistration);
 

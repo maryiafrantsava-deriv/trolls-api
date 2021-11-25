@@ -1,4 +1,5 @@
 export type DataScopesPropTypes = {
+    num: number;
     id: string;
     type: string;
     value: string;
@@ -6,27 +7,32 @@ export type DataScopesPropTypes = {
 }
 
 export const data_scopes: Array<DataScopesPropTypes> = [
-    {   id: "read-scope",
+    {   num: 0,
+        id: "read-scope",
         type: "checkbox", 
         value: "read", 
         label: "Read: View account activity" 
     },
-    {   id: "trade-scope", 
+    {   num: 1,
+        id: "trade-scope", 
         type: "checkbox", 
         value: "trade", 
         label: "Trade: Buy and sell contracts" 
     },
-    {   id: "trading_information-scope", 
+    {   num: 2,
+        id: "trading_information-scope", 
         type: "checkbox", 
         value: "trading_information", 
         label: "Trading Information: View trading and balance information" 
     },
-    {   id: "payments-scope", 
+    {   num: 3,
+        id: "payments-scope", 
         type: "checkbox", 
         value: "payments", 
         label: "Payments: Cashier (Deposit, Withdraw)" 
     },
-    {   id: "admin-scope", 
+    {   num: 4,
+        id: "admin-scope", 
         type: "checkbox", 
         value: "admin", 
         label: "Admin: API token management, application management" 
