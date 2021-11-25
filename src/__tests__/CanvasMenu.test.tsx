@@ -1,8 +1,18 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, cleanup } from "@testing-library/react";
 import CanvasMenu from "components/common/CanvasMenu/CanvasMenu";
+import { mockNextUseRouter } from "../utils/mockNextUseRouter";
 
 describe("CanvasMenu", () => {
+    beforeEach(() => {
+        mockNextUseRouter({
+            route: "/test",
+            pathname: "/test",
+            query: "",
+            asPath: "test",
+        });
+    });
+
     it("CanvasMenu component is rendered with hidden dropdown of Documentation links", () => {
         const result = render(<CanvasMenu is_canvas_menu_shown toggleCanvasMenu={() => {}} />);
 

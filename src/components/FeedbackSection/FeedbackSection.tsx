@@ -11,6 +11,7 @@ const homeFeedbackSection = {
             <Link href={"mailto: api-support@deriv.com"} key="email-link">
                 <a>api-support@deriv.com</a>
             </Link>,
+            <br key="next-line"/>,
             " if you have any questions.",
         ],
     },
@@ -75,21 +76,6 @@ const FeedbackSection: React.FC<FeedbackSectionPropsType> = ({ id }) => {
                         headerSize={2}
                         description={bugBountyFeedbackSection.description.right}
                         showButton={false}
-                    />
-                </div>
-            </div>
-        );
-    case "appRegistration":
-        return (
-            <div className={`${styles.cta}`}>
-                <div className={`${styles["row-container"]}`}>
-                    <SingleFeedbackSection
-                        background={"gray"}
-                        title={"Looking for your API token?"}
-                        headerSize={3}
-                        buttonLinkPath={"https://app.deriv.com/account/api-token"}
-                        titleButton={"Get your API token"}
-                        showButton
                     />
                 </div>
             </div>
