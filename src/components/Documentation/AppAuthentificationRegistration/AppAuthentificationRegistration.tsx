@@ -47,18 +47,17 @@ const AppAuthentificationRegistration: React.FC = () => {
     const [isRegister, setRegister] = useState( false );
 
     const newInputListText: NewInputListTextPropTypes = {};
-    
     inputListText.map((item) => {
-        console.log("newInputListText 000", newInputListText.undefined);
         newInputListText[(item.id).split("-")[1]] = item.text;
     });
-    console.log("newInputListText", newInputListText);
     
     const runRegister = ( event: any ) => {
-        // let request = app_id ? { app_update: app_id, scopes: [] } : { app_register: 1, scopes: [] };
         event.preventDefault();
         setRegister(true);
-        console.log("runRegister: ");
+    }
+
+    const handleChangeCheckboxScope = ( event: any ) => {
+
     }
 
     const editInputText = React.useCallback(( num: number, inputId: string, inputText: string ): void => {
@@ -103,7 +102,10 @@ const AppAuthentificationRegistration: React.FC = () => {
                             handleEditInputText={editInputText}
                         />
                     </fieldset>
-                    <Scopes dataScopes={data_scopes}/>
+                    <Scopes 
+                        dataScopes={data_scopes}
+                        handleChange={ handleChangeCheckboxScope }
+                    />
                     <Button 
                         id="btnRegister" 
                         className={styles["primary-btn-submit"]} 

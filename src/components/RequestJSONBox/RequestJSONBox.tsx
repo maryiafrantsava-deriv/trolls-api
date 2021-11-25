@@ -33,8 +33,7 @@ const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({
     newInputListText,
     isRegister,
 }) => {
-    console.log("request_example", request_example);
-    
+
     return (
         <div className={isAppRegistration ? style["form-content"] : style["playground-box"]}>
             {isAppRegistration ? (

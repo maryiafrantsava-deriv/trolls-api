@@ -31,8 +31,7 @@ export const InputList: React.FC<InputListPropsType> = React.memo(({
     const onInputChange = React.useCallback((event: any, num: any, id: any) => {
         const inputTextName = event.target.value;
         handleEditInputText(num, id, inputTextName);
-        console.log("should edit: ", inputListText);
-    }, [handleEditInputText, inputListText])
+    }, [ handleEditInputText ])
 
     return (
         <>

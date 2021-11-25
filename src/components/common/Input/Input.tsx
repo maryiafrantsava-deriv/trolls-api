@@ -24,8 +24,6 @@ export const Input: React.FC<InputPropsType>  = React.memo(({
     handleInputChange,
 }) => {
 
-    console.log("Input inputListText: ", inputListText);
-
     const onInputChange: ChangeEventHandler<HTMLInputElement> = React.useCallback((event) => {
         handleInputChange( event, num, id );
     }, [num, id, handleInputChange])    
