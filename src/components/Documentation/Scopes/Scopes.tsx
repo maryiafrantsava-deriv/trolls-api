@@ -8,7 +8,7 @@ type ScopesPropTypes = {
 
 export const Scopes: React.FC<ScopesPropTypes> = ({dataScopes}) => {
 
-    const scopes = dataScopes.map(( item: { id: string; type: string; value: string; label: string; }) => {
+    const scopes = dataScopes.map(( item ) => {
         return (
             <div key={item.id} className={styles["scopes-field"]}>
                 <input id={item.id} type={item.type} value={item.value}/>

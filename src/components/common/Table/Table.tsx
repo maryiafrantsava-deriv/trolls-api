@@ -9,13 +9,13 @@ type TablePropTypes = {
 
 export const Table: React.FC<TablePropTypes>  = ({data_table}) => {
 
-    const ths = data_table.map((item: { id: number; label: string; }, idx ) => {
+    const ths = data_table.map((item, idx ) => {
         const isLastChild = idx === item.id - 1; 
 
         return (
             <th
                 key={ item.id } 
-                colSpan={ isLastChild ? 2 : undefined }
+                colSpan={ isLastChild ? 2 : 1 }
                 className={styles["flex-tr-child"]}>
                 { item.label }
             </th>       
