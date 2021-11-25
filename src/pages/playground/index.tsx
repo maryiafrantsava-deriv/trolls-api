@@ -32,7 +32,7 @@ const PlayGround: React.FC = () => {
             alert("Invalid JSON!");
             return;
         }
-        const request = request_input.current?.value && JSON.parse(request_input.current?.value);
+        const _request = request_input.current?.value && JSON.parse(request_input.current?.value);
         // We have to update api instance if websockets connection is closed as a result of reset:
         let relevant_api = current_api;
         if (current_api.connection.readyState !== 1 && is_initial_socket) {
@@ -42,14 +42,14 @@ const PlayGround: React.FC = () => {
             relevant_api = generateDerivApiInstance();
             setIsInitialSocket(true);
         }
-        request &&
+        _request &&
             relevant_api
-                .send(request)
+                .send(_request)
                 .then((res: string) =>
-                    setMessages([...messages, { body: request, type: "req" }, { body: res, type: "res" }])
+                    setMessages([...messages, { body: _request, type: "req" }, { body: res, type: "res" }])
                 )
                 .catch((err: Error) =>
-                    setMessages([...messages, { body: request, type: "req" }, { body: err, type: "err" }])
+                    setMessages([...messages, { body: _request, type: "req" }, { body: err, type: "err" }])
                 );
         setCurrentAPI(relevant_api);
     }, [current_api, request_input, messages, is_initial_socket, selected_value]);
@@ -59,19 +59,17 @@ const PlayGround: React.FC = () => {
             setToken(inserted_token);
             localStorage.setItem("token", inserted_token);
             setSelectedValue("Authorize");
-            new Promise(res => {
-                res(
-                    setRequest(
-                        JSON.stringify(
-                            {
-                                authorize: inserted_token || token,
-                            },
-                            null,
-                            2
-                        )
+            Promise.resolve(
+                setRequest(
+                    JSON.stringify(
+                        {
+                            authorize: inserted_token || token,
+                        },
+                        null,
+                        2
                     )
-                );
-            }).then(() => sendRequest());
+                )
+            ).then(() => sendRequest());
         },
         [token, sendRequest]
     );
