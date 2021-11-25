@@ -62,7 +62,7 @@
             .menu-panel {
                 display: none;
                 height: 0;
-                padding: 0px 16px 10px 25px;
+                padding: 0px 16px 0px 25px;
                 transition: all 0.5s ease;
 
                 &.show-dropdown {
@@ -80,19 +80,6 @@
                     margin-bottom: 6px;
                     font-size: 14px;
                     font-weight: normal;
-
-                    &:before {
-                        content: "";
-                        position: absolute;
-                        left: 32px;
-                        width: 4px;
-                        height: 0;
-                        background-color: red;
-                        visibility: hidden;
-                        transition: all 0.2s ease-in-out;
-                        border-top-left-radius: 4px;
-                        border-bottom-left-radius: 4px;
-                    }
                 }
 
                 .selected {

@@ -44,7 +44,7 @@ const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({ request_example, ha
                 .then((res: string) =>
                     setMessages([...messages, { body: request, type: "req" }, { body: res, type: "res" }])
                 )
-                .catch((err: string) =>
+                .catch((err: Error) =>
                     setMessages([...messages, { body: request, type: "req" }, { body: err, type: "err" }])
                 );
         setCurrentAPI(relevant_api);
