@@ -2,11 +2,19 @@
 
 $slider-width: 588px;
 $slider-width-mobile: 248px;
-$slider-height: 248px;
+$slider-height: 254px;
+
+.author {
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: left;
+    width: auto;
+}
 
 .blockquote {
     position: relative;
-    text-align: left;
+    text-align: left !important;
+
     &::after {
         box-sizing: border-box;
         color: #f2f3f4;
@@ -21,147 +29,91 @@ $slider-height: 248px;
     }
 }
 
-.author {
-    font-size: 1rem;
-    line-height: 1.5;
-    text-align: left;
-    width: auto;
-}
-
 .content {
     font-size: 16px;
     line-height: 1.5;
     color: #333333;
-    margin-bottom: 0;
+    padding: 1.5rem 1rem 0;
+    width: $slider-width;
+
+    @media (max-width: 480px) {
+        width: $slider-width-mobile;
+    }
 }
 
 .control {
-    height: 50px;
-    position: absolute;
-    top: 35%;
-    width: 50px;
-    z-index: 2;
+    height: $slider-height;
+    z-index: 1000;
 }
 
-.mainPageRow {
-    padding: 40px 0;
+.clientsOpinion {
+    color: #333333;
+    font-family: "IBM plex sans", "sans-serif";
+    font-size: 48px;
+    font-weight: bold;
+    padding: 80px 0 40px;
     text-align: center;
 
-    .clientsOpinion {
-        color: #333333;
-        font-family: "IBM plex sans", "sans-serif";
-        font-size: 48px;
-        font-weight: bold;
-        margin-bottom: 40px;
-        text-align: center;
-
-        @media (max-width: 480px) {
-            margin-bottom: 10px;
-        }
-    }
-    .slider,
-    .wrapper,
-    .slide {
-        width: $slider-width;
-
-        @media (max-width: 480px) {
-            width: $slider-width-mobile;
-        }
-    }
-    .slides {
-        left: -$slider-width-mobile;
-        transition: left 0.2s ease-out;
-
-        // @media (max-width: 480px) {
-        //     left: -$slider-width-mobile;
-        // }
-    }
-    .prev {
-        left: -100px;
-    }
-    .next {
-        right: -100px;
+    @media (max-width: 480px) {
+        margin-bottom: 10px;
     }
 }
 
-.columnContainer {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    width: 100%;
-}
-
-.prev,
-.next {
-    background-size: 22px;
-    background-position: center;
-    background-repeat: no-repeat;
-    cursor: pointer;
-}
 .prev {
-    background-image: url(../../../../../public/arrow_left.svg);
-    left: -100px;
+    background-color: unset;
+    border: unset;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    z-index: 1000;
 }
 .next {
-    background-image: url(../../../../../public/arrow_right.svg);
-    right: -100px;
+    background-color: unset;
+    border: unset;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1000;
 }
 .prev:active,
 .next:active {
     transform: scale(0.8);
 }
 
-.slide {
+.row {
     align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.slide {
+    align-items: center !important;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     height: $slider-height;
     justify-content: center;
     position: relative;
-    transition: all 1s;
-    width: $slider-width;
-
-    @media (max-width: 480px) {
-        width: $slider-width-mobile;
-    }
 }
 
-.slider {
+.carouselWrapper {
     height: $slider-height;
-    left: 50%;
-    top: 50%;
-    transform: translate(0%);
-    width: $slider-width;
+    margin-bottom: 80px !important;
+    padding: 0 25% !important;
+    width: 100% !important;
 
     @media (max-width: 480px) {
-        height: 190px;
-        width: $slider-width-mobile;
+        padding: 0 5% !important;
     }
 }
 
-.slides {
-    display: flex;
-    left: -$slider-width;
-    position: relative;
-    top: 0;
-    width: 10000px;
+.carousel .slide {
+    color: white;
+    background: rgb(0, 0, 0);
+    width: 80% !important;
 }
 
-// .shifting {
-//     transition: left 0.2s ease-out;
-// }
-
-.wrapper {
-    height: $slider-height;
-    overflow: hidden;
-    position: relative;
-    width: $slider-width;
-    z-index: 1;
-
-    @media (max-width: 480px) {
-        width: $slider-width-mobile;
-    }
+.control-dots {
+    display: none !important;
 }
