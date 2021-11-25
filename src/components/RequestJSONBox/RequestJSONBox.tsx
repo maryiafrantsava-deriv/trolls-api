@@ -1,55 +1,33 @@
-import { api, APIType, generateDerivApiInstance } from "appid";
+import { APIType } from "appid";
 import Title from "components/common/Title";
 import ConsoleMessage from "components/ConsoleMessage/ConsoleMessage";
 import { ResetSendButtonsBlock } from "components/ResetSendButtonsBlock/ResetSendButtonsBlock";
-import React, { useRef, useState } from "react";
+import { MessageType } from "pages/playground";
+import React from "react";
 import styles from "../../pages/playground/Playground.module.scss";
 import style from "./RequestJSONBox.module.scss";
 
 type RequestJSONBoxPropTypes = {
     request_example?: string;
+    messages?: Array<MessageType>; // will be required later
     handleChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
     isAppRegistration?: boolean;
+    request_input?: React.RefObject<HTMLTextAreaElement>; // will be required later
+    sendRequest?: () => void; // will be required later
+    setMessages?: (message: Array<MessageType>) => void; // will be required later
+    current_api?: APIType; // will be required later
 };
 
-export type MessageType = {
-    body: string;
-    type: string;
-};
-
-const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({ request_example, handleChange, isAppRegistration }) => {
-    const [messages, setMessages] = useState<Array<MessageType>>([]);
-    const [is_initial_socket, setIsInitialSocket] = useState<boolean>(true);
-    const [current_api, setCurrentAPI] = useState<APIType>(api);
-    const request_input = useRef<HTMLTextAreaElement>(null);
-
-    const sendRequest = React.useCallback(() => {
-        if (!request_input.current?.value) {
-            alert("Invalid JSON!");
-            return;
-        }
-        const request = request_input.current?.value && JSON.parse(request_input.current?.value);
-        // We have to update api instance if websockets connection is closed as a result of reset:
-        let relevant_api = current_api;
-        if (current_api.connection.readyState !== 1 && is_initial_socket) {
-            relevant_api = generateDerivApiInstance();
-            setIsInitialSocket(false);
-        } else if (current_api.connection.readyState !== 1 && !is_initial_socket) {
-            relevant_api = generateDerivApiInstance();
-            setIsInitialSocket(true);
-        }
-        request &&
-            relevant_api
-                .send(request)
-                .then((res: string) =>
-                    setMessages([...messages, { body: request, type: "req" }, { body: res, type: "res" }])
-                )
-                .catch((err: Error) =>
-                    setMessages([...messages, { body: request, type: "req" }, { body: err, type: "err" }])
-                );
-        setCurrentAPI(relevant_api);
-    }, [current_api, request_input, messages, is_initial_socket]);
-
+const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({
+    request_example,
+    messages,
+    handleChange,
+    isAppRegistration,
+    request_input,
+    sendRequest,
+    setMessages,
+    current_api,
+}) => {
     return (
         <div className={isAppRegistration ? style["form-content"] : style["playground-box"]}>
             {isAppRegistration ? (
@@ -89,4 +67,4 @@ const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({ request_example, ha
     );
 };
 
-export default RequestJSONBox;
+export default React.memo(RequestJSONBox);

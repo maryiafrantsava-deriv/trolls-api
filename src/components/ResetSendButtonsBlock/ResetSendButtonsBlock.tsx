@@ -1,13 +1,13 @@
 import { APIType } from "appid";
 import Button from "components/common/Button/Button";
-import { MessageType } from "components/RequestJSONBox/RequestJSONBox";
+import { MessageType } from "pages/playground";
 import React from "react";
 import style from "./ResetSendButtonsBlock.module.scss";
 
 type ResetSendButtonsBlockPropsType = {
     isAppRegistration: boolean | undefined;
-    sendRequest: React.MouseEventHandler<HTMLButtonElement>;
-    resetMessagesInConsole: (messages: Array<MessageType>) => void;
+    sendRequest?: React.MouseEventHandler<HTMLButtonElement>; // will be required later
+    resetMessagesInConsole?: (messages: Array<MessageType>) => void; // will be required later
     current_api: APIType;
 };
 
@@ -16,7 +16,7 @@ export const ResetSendButtonsBlock: React.FC<ResetSendButtonsBlockPropsType> = R
         const onClick = React.useCallback(() => {
             current_api.connection.close();
             localStorage.removeItem("token");
-            resetMessagesInConsole([]);
+            resetMessagesInConsole?.([]);
         }, [resetMessagesInConsole, current_api]);
 
         return (
