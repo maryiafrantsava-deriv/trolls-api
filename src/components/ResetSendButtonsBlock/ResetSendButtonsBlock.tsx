@@ -1,6 +1,6 @@
 import { APIType } from "appid";
 import Button from "components/common/Button/Button";
-import { MessageType } from "pages/playground";
+import { MessageType } from "components/PlaygroundComponent/PlaygroundComponent";
 import React from "react";
 import style from "./ResetSendButtonsBlock.module.scss";
 

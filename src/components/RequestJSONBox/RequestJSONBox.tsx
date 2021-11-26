@@ -2,10 +2,10 @@ import { APIType } from "appid";
 import Title from "components/common/Title";
 import ConsoleMessage from "components/ConsoleMessage/ConsoleMessage";
 import { NewInputListTextPropTypes } from "components/Documentation/AppAuthentificationRegistration/AppAuthentificationRegistration";
+import { MessageType } from "components/PlaygroundComponent/PlaygroundComponent";
 import { ResetSendButtonsBlock } from "components/ResetSendButtonsBlock/ResetSendButtonsBlock";
-import { MessageType } from "pages/playground";
 import React from "react";
-import styles from "../../pages/playground/Playground.module.scss";
+import styles from "components/PlaygroundComponent/PlaygroundComponent.module.scss";
 import style from "./RequestJSONBox.module.scss";
 
 type RequestJSONBoxPropTypes = {
@@ -33,7 +33,6 @@ const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({
     newInputListText,
     isRegister,
 }) => {
-
     return (
         <div className={isAppRegistration ? style["form-content"] : style["playground-box"]}>
             {isAppRegistration ? (
@@ -52,7 +51,7 @@ const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({
                 }
                 placeholder={"Request JSON"}
                 ref={request_input}
-                value={ isAppRegistration && isRegister ? JSON.stringify(newInputListText, null, 2) : request_example }
+                value={isAppRegistration && isRegister ? JSON.stringify(newInputListText, null, 2) : request_example}
                 onChange={handleChange}
                 spellCheck={isAppRegistration ? false : undefined}
             />
