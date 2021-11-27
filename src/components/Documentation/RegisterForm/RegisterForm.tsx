@@ -40,15 +40,16 @@ export const RegisterForm: React.FC<RegisterFormPropsType> = React.memo(({
         <>
             <Formik
                 initialValues={{
-                    "application-name": "",
-                    "application-redirect_uri": "",
-                    "application-verification_uri": "",
-                    "aplication-homepage": "",
-                    "application-github": "",
-                    "application-appstore": "",
-                    "application-googleplay": "",
-                    "application-app_markup_percentage": "",
+                    app_register: 1,
                     scopes: [],
+                    name: "",
+                    redirect_uri: "",
+                    verification_uri: "",
+                    homepage: "",
+                    github: "",
+                    appstore: "",
+                    googleplay: "",
+                    app_markup_percentage: "",
                 }}
                 onSubmit={async (values) => {
                     await new Promise((r) => setTimeout(r, 500));
