@@ -53,7 +53,6 @@ export const RegisterForm: React.FC<RegisterFormPropsType> = React.memo(({
                 }}
                 onSubmit={async (values) => {
                     await new Promise((r) => setTimeout(r, 500));
-                    console.log(JSON.stringify(values, null, 2));
                     setRegister(true);
                     setInputListText(values);
                 }}

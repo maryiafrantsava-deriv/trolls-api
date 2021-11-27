@@ -9,7 +9,7 @@ import Table from "components/common/Table";
 import { data_table_app_registration } from "utils/data-table-app-registration";
 import RegisterForm from "../RegisterForm";
 import { api, APIType, generateDerivApiInstance } from "appid";
-import { MessageType } from "../../../pages/playground/index";
+import { MessageType } from "../../PlaygroundComponent/PlaygroundComponent";
 
 export type AppAuthentificationRegistrationPropTypes = {
     title: Array<string>;
@@ -44,8 +44,6 @@ const AppAuthentificationRegistration: React.FC = () => {
 
     const [inputListText, setInputListText] = useState({});
     const [isRegister, setRegister] = useState(false);
-
-    console.log("AAR", inputListText);
 
     const [current_api, setCurrentAPI] = useState<APIType>(api);
     const [is_initial_socket, setIsInitialSocket] = useState<boolean>(true);
