@@ -9,7 +9,7 @@ import Table from "components/common/Table";
 import { data_table_app_registration } from "utils/data-table-app-registration";
 import RegisterForm from "../RegisterForm";
 import { api, APIType, generateDerivApiInstance } from "appid";
-import { MessageType } from "pages/playground";
+import { MessageType } from "../../../pages/playground/index";
 
 export type AppAuthentificationRegistrationPropTypes = {
     title: Array<string>;
