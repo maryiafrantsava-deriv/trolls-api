@@ -11,28 +11,6 @@ import RegisterForm from "../RegisterForm";
 import { api, APIType, generateDerivApiInstance } from "appid";
 import { MessageType } from "../../PlaygroundComponent/PlaygroundComponent";
 
-export type AppAuthentificationRegistrationPropTypes = {
-    title: Array<string>;
-    textFirstPart: Array<string>;
-    textSecondPart: Array<string>;
-    textFocus: Array<string>;
-    button: Array<JSX.Element>;
-    textFieldset: Array<string>;
-    labelButton: Array<string>;
-    titleRegister: Array<string>;
-}
-export type InputListTextPropTypes = {
-    [key: string]: string | Array<string>;
-}
-
-export type RegisterYourAppPropTypes = {
-    num: number;
-    id: string;
-    label: string;
-    maxLength: number;
-    helperText: string;
-}
-
 const AppAuthentificationRegistration: React.FC = () => {
 
     const {
@@ -44,7 +22,6 @@ const AppAuthentificationRegistration: React.FC = () => {
 
     const [inputListText, setInputListText] = useState({});
     const [isRegister, setRegister] = useState(false);
-
     const [current_api, setCurrentAPI] = useState<APIType>(api);
     const [is_initial_socket, setIsInitialSocket] = useState<boolean>(true);
     const [messages, setMessages] = useState<Array<MessageType>>([]);
@@ -63,7 +40,6 @@ const AppAuthentificationRegistration: React.FC = () => {
             return;
         }
         const request = request_input.current?.value && JSON.parse(request_input.current?.value);
-        // We have to update api instance if websockets connection is closed as a result of reset:
         let relevant_api = current_api;
         if (current_api.connection.readyState !== 1 && is_initial_socket) {
             relevant_api = generateDerivApiInstance();

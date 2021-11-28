@@ -57,6 +57,13 @@
         line-height: 1.5;
         color: $dark-grey-color;
     }
+    .text-danger {
+        position: absolute;
+        top: 3.5rem;
+        color: red;
+        font-size: 14px;
+        left: 1rem;
+    }
 }
 
 .helper-label {
