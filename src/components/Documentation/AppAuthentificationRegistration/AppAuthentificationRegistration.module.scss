@@ -21,7 +21,7 @@
     justify-content: center;
     width: 80%;
 
-    fieldset {
+    .fieldset-container {
         width: 100%;
         border: none;
 
@@ -30,27 +30,6 @@
             margin-bottom: 20px;
             text-align: left;
             width: 100%;
-        }
-    }
-
-    .primary-btn-submit {
-        cursor: pointer;
-        width: fit-content;
-        height: fit-content;
-        padding: 10px 11px;
-        line-height: 1.43;
-        letter-spacing: normal;
-        text-align: center;
-        color: #fff;
-        font-size: 14px;
-        border-radius: 4px;
-        border: none;
-        background-color: #ff444f;
-        margin: 40px auto;
-        font-weight: 700;
-        
-        &:hover {
-            background-color: #d43e47;
         }
     }
 }

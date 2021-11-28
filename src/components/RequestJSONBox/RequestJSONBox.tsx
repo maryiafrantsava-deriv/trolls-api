@@ -1,7 +1,7 @@
 import { APIType } from "appid";
 import Title from "components/common/Title";
 import ConsoleMessage from "components/ConsoleMessage/ConsoleMessage";
-import { NewInputListTextPropTypes } from "components/Documentation/AppAuthentificationRegistration/AppAuthentificationRegistration";
+import { InputListTextPropTypes } from "components/Documentation/AppAuthentificationRegistration/AppAuthentificationRegistration";
 import { MessageType } from "components/PlaygroundComponent/PlaygroundComponent";
 import { ResetSendButtonsBlock } from "components/ResetSendButtonsBlock/ResetSendButtonsBlock";
 import React from "react";
@@ -17,7 +17,7 @@ type RequestJSONBoxPropTypes = {
     sendRequest?: () => void; // will be required later
     setMessages?: (message: Array<MessageType>) => void; // will be required later
     current_api?: APIType; // will be required later
-    newInputListText?: NewInputListTextPropTypes;
+    inputListText?: InputListTextPropTypes;
     isRegister?: boolean;
 };
 
@@ -30,7 +30,7 @@ const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({
     sendRequest,
     setMessages,
     current_api,
-    newInputListText,
+    inputListText,
     isRegister,
 }) => {
     return (
@@ -51,7 +51,7 @@ const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({
                 }
                 placeholder={"Request JSON"}
                 ref={request_input}
-                value={isAppRegistration && isRegister ? JSON.stringify(newInputListText, null, 2) : request_example}
+                value={ isAppRegistration && isRegister ? JSON.stringify(inputListText, null, 2) : request_example }
                 onChange={handleChange}
                 spellCheck={isAppRegistration ? false : undefined}
             />
@@ -62,7 +62,7 @@ const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({
                 current_api={current_api}
             />
             {messages && (
-                <div id="playground-console" className={styles["playground-console"]}>
+                <div id="playground-console" className={style["playground-console"]}>
                     {messages?.map((message, index) => (
                         <ConsoleMessage key={"message" + index} message={message}></ConsoleMessage>
                     ))}
