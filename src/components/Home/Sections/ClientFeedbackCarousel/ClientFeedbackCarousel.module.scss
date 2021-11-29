@@ -1,0 +1,119 @@
+@import "../Sections.module";
+
+$slider-width: 588px;
+$slider-width-mobile: 248px;
+$slider-height: 254px;
+
+.author {
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: left;
+    width: auto;
+}
+
+.blockquote {
+    position: relative;
+    text-align: left !important;
+
+    &::after {
+        box-sizing: border-box;
+        color: #f2f3f4;
+        content: "“";
+        font-size: 17rem;
+        font-weight: bold;
+        left: 0rem;
+        opacity: 56%;
+        position: absolute;
+        top: -6.9rem;
+        z-index: -1;
+    }
+}
+
+.content {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333333;
+    padding: 1.5rem 1rem 0;
+    width: $slider-width;
+
+    @media (max-width: 480px) {
+        width: $slider-width-mobile;
+    }
+}
+
+.control {
+    height: $slider-height;
+    z-index: 1000;
+}
+
+.clientsOpinion {
+    color: #333333;
+    font-family: "IBM plex sans", sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    padding: 80px 0 40px;
+    text-align: center;
+
+    @media (max-width: 480px) {
+        margin-bottom: 10px;
+    }
+}
+
+.prev {
+    background-color: unset;
+    border: unset;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    z-index: 1000;
+}
+.next {
+    background-color: unset;
+    border: unset;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+}
+.prev:active,
+.next:active {
+    transform: scale(0.8);
+}
+
+.row {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.slide {
+    align-items: center !important;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: $slider-height;
+    justify-content: center;
+    position: relative;
+}
+
+.carouselWrapper {
+    height: $slider-height;
+    margin-bottom: 80px !important;
+    padding: 0 25% !important;
+    width: 100% !important;
+
+    @media (max-width: 480px) {
+        padding: 0 5% !important;
+    }
+}
+
+.carousel .slide {
+    color: white;
+    background: rgb(0, 0, 0);
+    width: 80% !important;
+}
+
+.control-dots {
+    display: none !important;
+}

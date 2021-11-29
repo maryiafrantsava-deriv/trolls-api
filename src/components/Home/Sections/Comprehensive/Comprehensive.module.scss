@@ -9,9 +9,9 @@
     align-items: center;
     justify-content: center;
 
-@media screen and (max-width: 992px){
-    flex-direction: column;
-}
+    @media screen and (max-width: 992px) {
+        flex-direction: column;
+    }
     .singleContainer {
         display: flex;
         flex-direction: column;
@@ -25,12 +25,12 @@
         }
 
         h1 {
-            width: 80%;
+            width: 75%;
             margin-bottom: 12px;
             line-height: 1.25;
             font-size: 48px;
             text-align: center;
-            color: $black-color; 
+            color: $black-color;
             margin-top: 0;
         }
 
