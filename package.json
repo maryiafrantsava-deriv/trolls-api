@@ -8,7 +8,8 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "test:src-coverage": "jest --coverage --collectCoverageFrom=src/**/*.{js,jsx,ts,tsx}"
   },
   "dependencies": {
     "@deriv/deriv-api": "^1.0.8",
@@ -17,6 +18,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "yup": "^0.32.11"
+    "react-responsive-carousel": "^3.2.22"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.15.0",

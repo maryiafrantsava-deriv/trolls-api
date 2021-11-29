@@ -3,12 +3,17 @@ import { ResetSendButtonsBlock } from "components/ResetSendButtonsBlock/ResetSen
 import React from "react";
 
 describe("ResetSendButtonsBlock", () => {
+    let mock_on_click: () => void;
+    beforeEach(() => {
+        mock_on_click = jest.fn();
+    });
+
     it("ResetSendButtonsBlock component is rendered on API Playground page", () => {
         const result = render(
             <ResetSendButtonsBlock
                 isAppRegistration={false}
-                sendRequest={() => {}}
-                resetMessagesInConsole={() => {}}
+                sendRequest={mock_on_click}
+                resetMessagesInConsole={mock_on_click}
                 current_api={null}
             />
         );
@@ -21,8 +26,8 @@ describe("ResetSendButtonsBlock", () => {
         const result = render(
             <ResetSendButtonsBlock
                 isAppRegistration
-                sendRequest={() => {}}
-                resetMessagesInConsole={() => {}}
+                sendRequest={mock_on_click}
+                resetMessagesInConsole={mock_on_click}
                 current_api={null}
             />
         );

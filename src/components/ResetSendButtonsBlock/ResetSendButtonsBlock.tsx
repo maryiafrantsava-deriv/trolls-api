@@ -15,7 +15,6 @@ export const ResetSendButtonsBlock: React.FC<ResetSendButtonsBlockPropsType> = R
     ({ isAppRegistration, sendRequest, resetMessagesInConsole, current_api }) => {
         const onClick = React.useCallback(() => {
             current_api.connection.close();
-            localStorage.removeItem("token");
             resetMessagesInConsole?.([]);
         }, [resetMessagesInConsole, current_api]);
 

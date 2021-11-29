@@ -9,14 +9,14 @@ import styles from "components/PlaygroundComponent/PlaygroundComponent.module.sc
 import style from "./RequestJSONBox.module.scss";
 
 type RequestJSONBoxPropTypes = {
-    request_example?: string;
-    messages?: Array<MessageType>; // will be required later
-    handleChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
+    request_example: string;
+    messages: Array<MessageType>;
+    handleChange: React.ChangeEventHandler<HTMLTextAreaElement>;
     isAppRegistration?: boolean;
-    request_input?: React.RefObject<HTMLTextAreaElement>; // will be required later
-    sendRequest?: () => void; // will be required later
-    setMessages?: (message: Array<MessageType>) => void; // will be required later
-    current_api?: APIType; // will be required later
+    request_input: React.RefObject<HTMLTextAreaElement> | null;
+    sendRequest: () => void;
+    setMessages: (message: Array<MessageType>) => void;
+    current_api: APIType;
     inputListText?: InputListTextPropTypes;
     isRegister?: boolean;
 };
