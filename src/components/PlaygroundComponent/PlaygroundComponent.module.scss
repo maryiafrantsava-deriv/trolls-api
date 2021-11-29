@@ -291,6 +291,14 @@
     }
 }
 
+.playground-req-schema{
+    margin-bottom: 10px;
+}
+
+.playground-res-schema{
+    margin: 10px 0;
+}
+
 @media (max-width: 992px) {
     .playground-content {
         padding: 80px 5px;

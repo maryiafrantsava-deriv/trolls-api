@@ -2,10 +2,13 @@ import { api, APIType, generateDerivApiInstance } from "appid";
 import Title from "components/common/Title";
 import RequestJSONBox from "components/RequestJSONBox";
 import SelectRequestInput from "components/SelectRequestInput/SelectRequestInput";
+import SchemaWrapper from "components/Schema/SchemaWrapper";
 import TokenInputField from "components/TokenInputField/TokenInputField";
 import React, { useEffect, useRef, useState } from "react";
 import data_get_api_token from "utils/data-app-registration";
 import playground_requests from "utils/playground_requests";
+import send from "utils/send";
+import receive from "utils/receive"
 import style from "./PlaygroundComponent.module.scss";
 
 export type MessageType = {
@@ -24,6 +27,8 @@ export const PlaygroundComponent = () => {
     const [is_initial_socket, setIsInitialSocket] = useState<boolean>(true);
     const [messages, setMessages] = useState<Array<MessageType>>([]);
     const request_input = useRef<HTMLTextAreaElement>(null);
+    const [request_info, setRequestInfo] = useState<object | undefined>({});
+    const [response_info, setResponseInfo] = useState<object | undefined>({});
     const [text_data, setTextData] = useState<StoredData>({
         request: "",
         selected_value: "Select API Call - Version 3",
@@ -94,6 +99,13 @@ export const PlaygroundComponent = () => {
         [setTextData, sendRequest]
     );
 
+    const setInfo = (selected:string) => {
+        const request_data = send.find(el => Object.keys(el.properties)[0] === selected);
+        const response_data = receive.find(el => Object.keys(el.properties)[0] === selected);
+        setRequestInfo(request_data);
+        setResponseInfo(response_data)
+    }
+
     const handleSelectChange: React.ChangeEventHandler<HTMLSelectElement> = React.useCallback(
         e => {
             e.preventDefault();
@@ -104,6 +116,8 @@ export const PlaygroundComponent = () => {
                 request: JSON.stringify(request_body?.body, null, 4),
             };
             setTextData({ ...new_text_data });
+            setInfo(new_text_data.selected_value);
+
             sessionStorage.setItem(
                 "session_data",
                 JSON.stringify({ ...new_text_data, selected_value: request_body?.title })
@@ -144,8 +158,12 @@ export const PlaygroundComponent = () => {
                 <RequestJSONBox {...json_box_props} />
             </div>
             <div id="playground" className={style["playground-api-docs"]}>
-                <div id="playground-req-schema"></div>
-                <div id="playground-res-schema"></div>
+                <div className={style["playground-req-schema"]}>
+                    <SchemaWrapper info={request_info} />
+                </div>
+                <div className={style["playground-res-schema"]}>
+                    <SchemaWrapper info={response_info} />
+                </div>
             </div>
         </div>
     );
