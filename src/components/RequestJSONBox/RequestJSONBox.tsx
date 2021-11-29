@@ -1,7 +1,7 @@
 import { APIType } from "appid";
 import Title from "components/common/Title";
 import ConsoleMessage from "components/ConsoleMessage/ConsoleMessage";
-import { InputListTextPropTypes } from "components/Documentation/AppAuthentificationRegistration/AppAuthentificationRegistration";
+import { InputListTextPropTypes } from "components/Documentation/AppAuthentificationRegistration/AppAuthentificationRegistrationPropTypes";
 import { MessageType } from "components/PlaygroundComponent/PlaygroundComponent";
 import { ResetSendButtonsBlock } from "components/ResetSendButtonsBlock/ResetSendButtonsBlock";
 import React from "react";
