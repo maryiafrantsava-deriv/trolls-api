@@ -53,8 +53,9 @@ const AppAuthentificationRegistration: React.FC = () => {
     const [token, setToken] = useState<string>("");
 
     useEffect(() => {
-        const _token = localStorage.getItem("token");
-        setToken(() => (_token === null ? "" : _token));
+        const sessionStorage_data = sessionStorage.getItem("session_data");
+        const session_data_object = sessionStorage_data !== null ? JSON.parse(sessionStorage_data) : {token: ""};
+        setToken(session_data_object.token);
     }, []);
 
     const sendRequest = React.useCallback(() => {
@@ -87,20 +88,10 @@ const AppAuthentificationRegistration: React.FC = () => {
     const handleAuthenticateClick = React.useCallback(
         (inserted_token: string) => {
             setToken(inserted_token);
-            localStorage.setItem("token", inserted_token);
-            new Promise(res => {
-                res(
-                    setRequest(
-                        JSON.stringify(
-                            {
-                                authorize: inserted_token || token,
-                            },
-                            null,
-                            2
-                        )
-                    )
-                );
-            }).then(() => sendRequest());
+            sessionStorage.setItem("session_data", JSON.stringify({request: "", selected_value: "", token: inserted_token}));
+            Promise.resolve(setRequest(JSON.stringify({authorize: inserted_token || token}, null, 2))).then(() => {
+                sendRequest();
+            });
         },
         [token, sendRequest]
     );
@@ -132,6 +123,7 @@ const AppAuthentificationRegistration: React.FC = () => {
                 isAppRegistration={true}
                 label={textFieldset.toString()}
                 sendTokenToJSON={handleAuthenticateClick}
+                token={token}
             />
             <div className={styles["horizontal-separator-grey"]}></div>
             <div id={styles.frmNewApplication}>

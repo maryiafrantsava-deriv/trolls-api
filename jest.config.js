@@ -1,7 +1,6 @@
 module.exports = {
     collectCoverage: true,
-    collectCoverageFrom: ["**/*.{js,jsx,ts,tsx}", "!**/*.d.ts", "!**/node_modules/**"],
-    coverageReporters: ["lcov"],
+    collectCoverageFrom: ["**/*.{js,jsx,ts,tsx}", "!**/*.d.ts", "!**/node_modules/**", "!**/webpack/**", "!**/.next/**"],
     coverageDirectory: "./coverage/",
     moduleNameMapper: {
         /* Handle CSS imports (with CSS modules)

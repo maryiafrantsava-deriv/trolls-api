@@ -35,7 +35,11 @@ export const PlaygroundComponent = () => {
         const session_data_object = sessionStorage_data !== null ? JSON.parse(sessionStorage_data) : text_data;
         setTextData({ ...session_data_object });
         return () => {
-            sessionStorage.clear();
+            setTextData((relevant_text_data: StoredData) => {
+                const data_object = { request: "", selected_value: "", token: relevant_text_data.token };
+                sessionStorage.setItem("session_data", JSON.stringify(data_object));
+                return data_object;
+            });
         };
     }, []);
 
@@ -68,17 +72,10 @@ export const PlaygroundComponent = () => {
 
     const handleAuthenticateClick = React.useCallback(
         (inserted_token: string) => {
-            const database_authorize_request = playground_requests.find(el => el.name === "authorize");
-            const _token =
-                inserted_token ||
-                ((database_authorize_request?.body && database_authorize_request?.body.authorize) as string);
-            const request_body = {
-                authorize: _token,
-            };
             const new_text_data = {
-                token: _token,
+                token: inserted_token,
                 selected_value: "Authorize",
-                request: JSON.stringify(request_body, null, 2),
+                request: JSON.stringify({ authorize: inserted_token }, null, 2),
             };
             sessionStorage.setItem("session_data", JSON.stringify(new_text_data));
             Promise.resolve(setTextData({ ...new_text_data })).then(() => {
@@ -126,7 +123,7 @@ export const PlaygroundComponent = () => {
             <div className={`${style["playground-api-json"]} ${style.dark}`}>
                 <SelectRequestInput selected_value={text_data.selected_value} handleChange={handleSelectChange} />
                 <div className={`${style["api-token"]} ${style.dark}`}>
-                    <TokenInputField sendTokenToJSON={handleAuthenticateClick} />
+                    <TokenInputField sendTokenToJSON={handleAuthenticateClick} token={text_data.token} />
                     <div className={style["vertical-separator"]}></div>
                     <div className={style["cta"]}>
                         <Title headerSize="h3" className={style["title"]}>
