@@ -16,12 +16,12 @@ type AuthRequiredProps = {
 
 const SchemaHeader:React.FC<SchemaHeaderProps> = ({title, description, auth_required, auth_scopes}) => {
 
-    const AuthRequired:React.FC<AuthRequiredProps> = ({auth_scopes}) => {
+    const AuthRequired:React.FC<AuthRequiredProps> = ({auth_scopes: scopes}) => {
         return (
             <div>
                 <span className={`${style["schema-sub-text"]}`}>Auth Required: </span>
                 <span>
-                    {auth_scopes.map(el => <span className={`${style["schema-role"]} ${style["schema-sub-text"]}`} key={el}>{el}</span>)}
+                    {scopes.map(scope => <span className={`${style["schema-role"]} ${style["schema-sub-text"]}`} key={scope}>{scope}</span>)}
                 </span>
             </div>)
     }

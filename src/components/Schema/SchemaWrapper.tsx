@@ -1,10 +1,6 @@
 import React from "react";
 import SchemaHeader from  "./SchemaHeader";
 import SchemaBody from "./SchemaBody";
-import Title from "../common/Title/Title";
-import send from "../../utils/send";
-import receive from "../../utils/receive"
-import style from "./Schema.module.scss"
 
 type SchemaWrapperProps = {
     info: any;

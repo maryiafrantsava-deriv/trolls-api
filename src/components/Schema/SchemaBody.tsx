@@ -13,14 +13,14 @@ const Properities: React.FC<SchemaBodyProps> = ({properties}) => {
     const names = Object.keys(properties);
 
     const CodeString: React.FC<CodeStringProps> = ({description}) => {
-        const highlightCode = description.split(" ").map((el, i) => {
-            return (/`([^`]*)`/.test(el)) ?
+        const highlightCode = description.split(" ").map((desc, index) => {
+            return (/`([^`]*)`/.test(desc)) ?
                 <span
                     className={`${style["schema-role"]} ${style["schema-code"]}`}
-                    key={el + i}
-                >{`${el.slice(1, el.length - 1)}`}
+                    key={desc + index}
+                >{`${desc.slice(1, desc.length - 1)}`}
                 </span>
-                : ` ${el} `;
+                : ` ${desc} `;
         });
         return (
             <div className={style["schema-body-description"]}>{highlightCode}</div>
@@ -28,13 +28,13 @@ const Properities: React.FC<SchemaBodyProps> = ({properties}) => {
     }
 
     return (
-        <div>{names.map((el, i) => {
-            const {type, description, pattern, enum: _enum, items} = properties[el];
+        <div>{names.map((name, idx) => {
+            const {type, description, pattern, enum: _enum} = properties[name];
 
             return (
-                <div className={style["schema-body-signature"]} key={el + i}>
+                <div className={style["schema-body-signature"]} key={name + idx}>
                     <div className={style["schema-body-header"]}>
-                        <p><strong>{el}</strong></p>
+                        <p><strong>{name}</strong></p>
                         {_enum ? <div className={style["schema-body-type"]}>{type}
                             <div className={style["schema-enums"]}>{_enum.map((el: string, i: number) => <div
                                 className={`${style["schema-role"]} ${style["schema-code"]} ${style["schema-enums"]}`}
