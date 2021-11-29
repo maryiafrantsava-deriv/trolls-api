@@ -116,7 +116,6 @@ export const PlaygroundComponent = () => {
                 request: JSON.stringify(request_body?.body, null, 4),
             };
             setTextData({ ...new_text_data });
-            const a = new_text_data.selected_value;
             setInfo(new_text_data.selected_value);
 
             sessionStorage.setItem(
