@@ -27,8 +27,8 @@ export const PlaygroundComponent = () => {
     const [is_initial_socket, setIsInitialSocket] = useState<boolean>(true);
     const [messages, setMessages] = useState<Array<MessageType>>([]);
     const request_input = useRef<HTMLTextAreaElement>(null);
-    const [request_info, setRequestInfo] = useState<object>({});
-    const [response_info, setResponseInfo] = useState<object>({});
+    const [request_info, setRequestInfo] = useState<object | undefined>({});
+    const [response_info, setResponseInfo] = useState<object | undefined>({});
     const [text_data, setTextData] = useState<StoredData>({
         request: "",
         selected_value: "Select API Call - Version 3",
@@ -159,10 +159,10 @@ export const PlaygroundComponent = () => {
                 <RequestJSONBox {...json_box_props} />
             </div>
             <div id="playground" className={style["playground-api-docs"]}>
-                <div id="playground-req-schema">
+                <div className={style["playground-req-schema"]}>
                     <SchemaWrapper info={request_info} />
                 </div>
-                <div id="playground-res-schema">
+                <div className={style["playground-res-schema"]}>
                     <SchemaWrapper info={response_info} />
                 </div>
             </div>
