@@ -1,50 +1,15 @@
+import CodeContent from "components/common/CodeContent/CodeContent";
 import React from "react";
-import style from "../../pages/playground/Playground.module.scss";
+import style from "components/PlaygroundComponent/PlaygroundComponent.module.scss";
+import { MessageType } from "components/PlaygroundComponent/PlaygroundComponent";
 
-const highlightObject = (object: any, default_indentation = "", default_depth = 0) => {
-    const depth = default_depth + 1;
-    const is_array = Array.isArray(object);
-    const keys = Object.keys(object);
-    const indentation = default_indentation + "    ";
-    const end_line = "\n";
-    const open_bracket = is_array ? "[\n" : "{\n";
-    const close_bracket = is_array ? "]" : "}";
-    const separation_colon = ": ";
-
+const ConsoleMessage: React.FC<{ message: MessageType }> = ({ message }) => {
+    const payload = JSON.stringify(message.body, null, 4);
     return (
-        <>
-            <span>{open_bracket}</span>
-            {keys?.map((key, index) => {
-                const type = typeof object[key];
-                const is_last = keys.length === index+1;
-
-                return (
-                    <span key={key+depth}>
-                        <span>{indentation}</span>
-                        {!is_array && <span className={style["key"]}>{`"${key}"`}</span>}
-                        {!is_array && <>{separation_colon}</>}
-                        {type === "object"
-                            ? highlightObject(object[key], indentation)
-                            : <span className={style[type]}>{type === "number" ? object[key] : `"${object[key]}"`}</span>
-                        }
-                        <>{is_last ? end_line : ","+end_line}</>
-                    </span>
-                )
-            })}
-            <>{default_indentation.length ? default_indentation : ""}</>
-            <span>{close_bracket}</span>
-        </>
-    )
-}
-
-const ConsoleMessage: React.FC<{ message: any }> = ({ message }) => {
-    const payload = message.body;
-
-    return (
-        <pre className={style[message.type]}>
-            {message && highlightObject(payload)}
-        </pre>
-    )
-}
+        <div className={style[message.type]}>
+            <CodeContent lang="json" data={payload}></CodeContent>
+        </div>
+    );
+};
 
 export default ConsoleMessage;

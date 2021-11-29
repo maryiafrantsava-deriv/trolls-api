@@ -1,7 +1,7 @@
 @import "../Sections.module";
 
 .hero-image {
-    background-image: linear-gradient(rgba(0,0,0,0.16),rgba(0,0,0,0.16)),url(../../../../../public/header.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.16)), url(../../../../../public/header.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -17,7 +17,7 @@
         align-items: center;
         padding: 160px 0;
         width: 1008px;
-    
+
         h1 {
             max-width: 775px;
             font-size: 64px;
@@ -36,13 +36,23 @@
     }
 }
 
+@media screen and (max-width: 992px) {
+    .hero-image {
+        .hero-container {
+            padding: 80px 20px;
+        }
+    }
+}
+
 @media screen and (max-width: 480px) {
-    .hero-container {
-        flex-direction: column;
-        padding: 80px 16px;
+    .hero-image {
+        .hero-container {
+            flex-direction: column;
+            padding: 80px 16px;
 
             h1 {
                 font-size: 32px !important;
             }
+        }
     }
 }
