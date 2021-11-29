@@ -24,17 +24,17 @@ const RegisterSchema = Yup.object().shape(
             .required("Required"),
         redirect_uri: Yup.string()
             .matches(
-                /^[a-z][a-z0-9.+\\-]*:\/\/[0-9a-zA-Z\\.-]+[\\%\\\/\\w \\.-]*$/,
+                /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)/,
                 "Enter correct redirect url!")
             .required("Required"),
         verification_uri: Yup.string()
             .matches(
-                /^[a-z][a-z0-9.+\\-]*:\/\/[0-9a-zA-Z\\.-]+[\\%\\\/\\w \\.-]*$/,
+                /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)/,
                 "Enter correct verification url!")
             .required("Required"),
         homepage: Yup.string()
             .matches(
-                /^https?:\/\/[0-9a-zA-Z\\.-]+[\\%\\\/\\w \\.-]*$/,
+                /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)/,
                 "Enter correct homepage url!")
             .required("Required"),
         github: Yup.string()
