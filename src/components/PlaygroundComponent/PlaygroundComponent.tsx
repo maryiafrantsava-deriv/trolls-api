@@ -31,15 +31,24 @@ export const PlaygroundComponent = () => {
     });
 
     useEffect(() => {
+        const onHashChanged = () => {
+            setTextData((relevant_text_data: StoredData) => {
+                const data_object = { ...relevant_text_data, selected_value: window.location.hash.slice(1) };
+                sessionStorage.setItem("session_data", JSON.stringify(data_object));
+                return data_object;
+            });
+        };
         const sessionStorage_data = sessionStorage.getItem("session_data");
         const session_data_object = sessionStorage_data !== null ? JSON.parse(sessionStorage_data) : text_data;
         setTextData({ ...session_data_object });
+        window.addEventListener("hashchange", onHashChanged);
         return () => {
             setTextData((relevant_text_data: StoredData) => {
                 const data_object = { request: "", selected_value: "", token: relevant_text_data.token };
                 sessionStorage.setItem("session_data", JSON.stringify(data_object));
                 return data_object;
             });
+            window.removeEventListener("hashchange", onHashChanged);
         };
     }, []);
 
