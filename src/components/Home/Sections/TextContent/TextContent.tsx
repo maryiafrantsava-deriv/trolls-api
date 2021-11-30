@@ -10,12 +10,13 @@ type DataType = {
 
 type TextContentPropsType = {
     data: DataType,
+    isDerivApi?: boolean,
 };
 
-const TextContent: React.FC<TextContentPropsType> = ({ data }) => (
+const TextContent: React.FC<TextContentPropsType> = ({ data, isDerivApi }) => (
     <div id="textContent" className={styleSections.textContent}>
         <Title className="" headerSize="h1">{data.title}</Title>
-        <div className={styleSections.subheader}>
+        <div className={isDerivApi ? `${styleSections.subheader} ${styleSections.derivApi}` : styleSections.subheader}>
             <span>{data.textFirstPart}</span>
             {data.textSecondPart.length >= 1 ? (
                 <span>{data.textSecondPart}</span>

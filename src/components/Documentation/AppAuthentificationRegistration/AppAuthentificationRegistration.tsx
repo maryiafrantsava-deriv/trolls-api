@@ -6,10 +6,10 @@ import styles from "./AppAuthentificationRegistration.module.scss";
 import TokenInputField from "components/TokenInputField/TokenInputField";
 import RequestJSONBox from "components/RequestJSONBox";
 import Table from "components/common/Table";
-import { data_table_app_registration } from "utils/data-table-app-registration";
 import RegisterForm from "../RegisterForm";
 import { api, APIType, generateDerivApiInstance } from "appid";
 import { MessageType } from "../../PlaygroundComponent/PlaygroundComponent";
+import { DataMessagesApiListPropTypes } from "components/common/Table/Table";
 
 const AppAuthentificationRegistration: React.FC = () => {
 
@@ -22,25 +22,52 @@ const AppAuthentificationRegistration: React.FC = () => {
 
     const [inputListText, setInputListText] = useState({});
     const [isRegister, setRegister] = useState(false);
+    const [isSendApiList, setSendApiList] = useState(false);
     const [current_api, setCurrentAPI] = useState<APIType>(api);
     const [is_initial_socket, setIsInitialSocket] = useState<boolean>(true);
     const [messages, setMessages] = useState<Array<MessageType>>([]);
+    const [messagesApiList, setMessagesApiList] = useState<Array<MessageType>>([]);
     const request_input = useRef<HTMLTextAreaElement>(null);
     const [request, setRequest] = useState("");
     const [token, setToken] = useState<string>("");
 
+    // useEffect(() => {
+    //     () => messages;
+    // }, [messages]);
+
+    console.log("messages", messages);
+    console.log("messages2", messagesApiList);
+
+    // type EchoReqPropTypes = {
+    //     app_list: number;
+    //     req_id: number;
+    // }
+
+    // type DataMessagesApiListPropTypes2 = {
+    //     app_list: Array<DataMessagesApiListPropTypes>;
+    //     echo_req: any;
+    //     msg_type: string;
+    //     req_id: number;
+    // }
+    // type TablePropTypes = {
+    //     dataMessagesApiList: Array<DataMessagesApiListPropTypes2>;
+    // };
+
+    const dataMessagesApiList: Array<DataMessagesApiListPropTypes> = messagesApiList[1]?.body?.app_list;
+    console.log("dataMessagesApiList!!!!", dataMessagesApiList);
+
     useEffect(() => {
         const sessionStorage_data = sessionStorage.getItem("session_data");
-        const session_data_object = sessionStorage_data !== null ? JSON.parse(sessionStorage_data) : {token: ""};
+        const session_data_object = sessionStorage_data !== null ? JSON.parse(sessionStorage_data) : { token: "" };
         setToken(session_data_object.token);
     }, []);
 
-    const sendRequest = React.useCallback(() => {
-        if (!request_input.current?.value) {
-            alert("Invalid JSON!");
-            return;
-        }
-        const request = request_input.current?.value && JSON.parse(request_input.current?.value);
+    const sendRequestApiList = React.useCallback(() => {
+        const request_app_list = {
+            "app_list": 1
+        };
+        !request_input.current?.value ? alert("Invalid JSON!") : null;
+        const request = request_app_list;
         let relevant_api = current_api;
         if (current_api.connection.readyState !== 1 && is_initial_socket) {
             relevant_api = generateDerivApiInstance();
@@ -52,32 +79,70 @@ const AppAuthentificationRegistration: React.FC = () => {
         request &&
             relevant_api
                 .send(request)
-                .then((res: string) =>
-                    setMessages([...messages, { body: request, type: "req" }, { body: res, type: "res" }])
+                .then((res: string) => {
+                    setMessagesApiList([...messagesApiList, { body: request, type: "req" }, { body: res, type: "res" }])
+                    console.log("res sendRequestApiList", res);
+                }
                 )
                 .catch((err: Error) =>
-                    setMessages([...messages, { body: request, type: "req" }, { body: err, type: "err" }])
+                    setMessagesApiList([...messagesApiList, { body: request, type: "req" }, { body: err, type: "err" }])
                 );
+
         setCurrentAPI(relevant_api);
-    }, [current_api, request_input, messages, is_initial_socket]);
+        setSendApiList(true);
+    }, [current_api, is_initial_socket, messagesApiList]);
+
+    const sendRequest = React.useCallback((is_auth?: boolean) => {
+        if (!request_input.current?.value) {
+            alert("Invalid JSON!");
+            return;
+        }
+        const _request = request_input.current?.value && JSON.parse(request_input.current?.value);
+        let relevant_api = current_api;
+        if (current_api.connection.readyState !== 1 && is_initial_socket) {
+            relevant_api = generateDerivApiInstance();
+            setIsInitialSocket(false);
+        } else if (current_api.connection.readyState !== 1 && !is_initial_socket) {
+            relevant_api = generateDerivApiInstance();
+            setIsInitialSocket(true);
+        }
+        if (is_auth === true && _request) {
+            relevant_api
+                .send(_request)
+                .then((res: string) => setMessages([...messages, { body: _request, type: "req" }, { body: res, type: "res" }]))
+                .catch((err: Error) => setMessages([...messages, { body: _request, type: "req" }, { body: err, type: "err" }]))
+                .then(() => sendRequestApiList())
+        } else if (_request) {
+            relevant_api
+                .send(_request)
+                .then((res: string) => setMessages([...messages, { body: _request, type: "req" }, { body: res, type: "res" }]))
+                .catch((err: Error) => setMessages([...messages, { body: _request, type: "req" }, { body: err, type: "err" }]))
+        }
+        
+        setCurrentAPI(relevant_api);
+    }, [current_api, is_initial_socket, messages, sendRequestApiList]);
+
 
     const handleAuthenticateClick = React.useCallback(
         (inserted_token: string) => {
             setToken(inserted_token);
-            sessionStorage.setItem("session_data", JSON.stringify({request: "", selected_value: "", token: inserted_token}));
-            Promise.resolve(setRequest(JSON.stringify({authorize: inserted_token || token}, null, 2))).then(() => {
-                sendRequest();
-            });
+            sessionStorage.setItem("session_data", JSON.stringify({ request: "", selected_value: "", token: inserted_token }));
+            Promise.resolve(setRequest(JSON.stringify({ authorize: inserted_token || token }, null, 2)))
+                .then(() => sendRequest(true))
         },
         [token, sendRequest]
     );
 
-    const handleTextAreaInput: React.ChangeEventHandler<HTMLTextAreaElement> = e => setRequest(e.target.value);
+    // if(isSendRequest){
+    //     Promise.then(() => sendRequest(true); ///should besend request
+    // }
 
+    const handleTextAreaInput: React.ChangeEventHandler<HTMLTextAreaElement> = e => setRequest(e.target.value);
+    
     const json_box_props = {
         current_api,
         sendRequest,
-        messages,
+        messages: [...messages, messagesApiList[1] || [] ],
         setMessages,
         request_example: request,
         handleChange: handleTextAreaInput,
@@ -115,7 +180,9 @@ const AppAuthentificationRegistration: React.FC = () => {
             </div>
             <div className={styles["horizontal-separator-grey"]}></div>
             <div className={styles["request-container"]}>
-                <Table data_table={data_table_app_registration} />
+                <Table 
+                    dataMessagesApiList={dataMessagesApiList}
+                    isSendApiList={isSendApiList}/>
                 <fieldset className={styles["mb-0"]}>
                     <RequestJSONBox
                         isAppRegistration={true}
