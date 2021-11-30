@@ -17,7 +17,7 @@ const Properities: React.FC<SchemaBodyProps> = ({properties}) => {
             return (/`([^`]*)`/.test(desc)) ?
                 <span
                     className={`${style["schema-role"]} ${style["schema-code"]}`}
-                    key={desc + index}
+                    key={index}
                 >{`${desc.slice(1, desc.length - 1)}`}
                 </span>
                 : ` ${desc} `;
@@ -32,13 +32,13 @@ const Properities: React.FC<SchemaBodyProps> = ({properties}) => {
             const {type, description, pattern, enum: _enum} = properties[name];
 
             return (
-                <div className={style["schema-body-signature"]} key={name + idx}>
+                <div className={style["schema-body-signature"]} key={idx}>
                     <div className={style["schema-body-header"]}>
                         <p><strong>{name}</strong></p>
                         {_enum ? <div className={style["schema-body-type"]}>{type}
                             <div className={style["schema-enums"]}>{_enum.map((el: string, i: number) => <div
                                 className={`${style["schema-role"]} ${style["schema-code"]} ${style["schema-enums"]}`}
-                                key={el + i}>{el}</div>)}
+                                key={i}>{el}</div>)}
                             </div>
                         </div> : null}
                         {pattern ? <div className={style["schema-regex-container"]}>
