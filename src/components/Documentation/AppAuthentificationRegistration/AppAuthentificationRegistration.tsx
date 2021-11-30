@@ -50,7 +50,10 @@ const AppAuthentificationRegistration: React.FC = () => {
         const request_app_list = {
             "app_list": 1
         };
-        !request_input.current?.value ? alert("Invalid JSON!") : null;
+        if (!request_input.current?.value) {
+            alert("Invalid JSON!");
+            return;
+        }
         const request = request_app_list;
         let relevant_api = current_api;
         if (current_api.connection.readyState !== 1 && is_initial_socket) {
