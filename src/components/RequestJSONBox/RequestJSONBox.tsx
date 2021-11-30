@@ -5,7 +5,6 @@ import { InputListTextPropTypes } from "components/Documentation/AppAuthentifica
 import { MessageType } from "components/PlaygroundComponent/PlaygroundComponent";
 import { ResetSendButtonsBlock } from "components/ResetSendButtonsBlock/ResetSendButtonsBlock";
 import React from "react";
-import styles from "components/PlaygroundComponent/PlaygroundComponent.module.scss";
 import style from "./RequestJSONBox.module.scss";
 
 type RequestJSONBoxPropTypes = {

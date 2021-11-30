@@ -1,15 +1,15 @@
+import { api, APIType, generateDerivApiInstance } from "appid";
+import Table from "components/common/Table";
+import { DataMessagesApiListPropTypes } from "components/common/Table/Table";
 import Title from "components/common/Title";
 import TextContent from "components/Home/Sections/TextContent";
+import RequestJSONBox from "components/RequestJSONBox";
+import TokenInputField from "components/TokenInputField/TokenInputField";
 import React, { useEffect, useRef, useState } from "react";
 import data_get_api_token from "utils/data-app-registration";
-import styles from "./AppAuthentificationRegistration.module.scss";
-import TokenInputField from "components/TokenInputField/TokenInputField";
-import RequestJSONBox from "components/RequestJSONBox";
-import Table from "components/common/Table";
-import RegisterForm from "../RegisterForm";
-import { api, APIType, generateDerivApiInstance } from "appid";
 import { MessageType } from "../../PlaygroundComponent/PlaygroundComponent";
-import { DataMessagesApiListPropTypes } from "components/common/Table/Table";
+import RegisterForm from "../RegisterForm";
+import styles from "./AppAuthentificationRegistration.module.scss";
 
 export type DataBodyMessagesApiListPropTypes = {
     app_list: Array<DataMessagesApiListPropTypes>;
@@ -54,7 +54,7 @@ const AppAuthentificationRegistration: React.FC = () => {
             alert("Invalid JSON!");
             return;
         }
-        const request = request_app_list;
+        const _request = request_app_list;
         let relevant_api = current_api;
         if (current_api.connection.readyState !== 1 && is_initial_socket) {
             relevant_api = generateDerivApiInstance();
@@ -63,15 +63,15 @@ const AppAuthentificationRegistration: React.FC = () => {
             relevant_api = generateDerivApiInstance();
             setIsInitialSocket(true);
         }
-        request &&
+        _request &&
             relevant_api
-                .send(request)
+                .send(_request)
                 .then((res: string) => {
-                    setMessagesApiList([...messagesApiList, { body: request, type: "req" }, { body: res, type: "res" }])
+                    setMessagesApiList([...messagesApiList, { body: _request, type: "req" }, { body: res, type: "res" }])
                 }
                 )
                 .catch((err: Error) =>
-                    setMessagesApiList([...messagesApiList, { body: request, type: "req" }, { body: err, type: "err" }])
+                    setMessagesApiList([...messagesApiList, { body: _request, type: "req" }, { body: err, type: "err" }])
                 );
 
         setCurrentAPI(relevant_api);
