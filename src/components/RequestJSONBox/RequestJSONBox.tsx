@@ -14,7 +14,6 @@ type RequestJSONBoxPropTypes = {
     handleChange: React.ChangeEventHandler<HTMLTextAreaElement>;
     isAppRegistration?: boolean;
     request_input: React.RefObject<HTMLTextAreaElement> | null;
-    // sendRequest: (request_app_list: any) => void;
     sendRequest: () => void;
     setMessages: (message: Array<MessageType>) => void;
     current_api: APIType;

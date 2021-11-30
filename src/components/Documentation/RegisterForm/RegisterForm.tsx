@@ -60,7 +60,6 @@ export const RegisterForm: React.FC<RegisterFormPropsType> = React.memo(({
                     setInputListText(values);
                     setRegisterData(values);
                     localStorage.setItem("register_data", JSON.stringify(values, null, 2));
-                    
                 }}
             >
                 <Form>

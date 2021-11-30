@@ -11,6 +11,13 @@ import { api, APIType, generateDerivApiInstance } from "appid";
 import { MessageType } from "../../PlaygroundComponent/PlaygroundComponent";
 import { DataMessagesApiListPropTypes } from "components/common/Table/Table";
 
+export type DataBodyMessagesApiListPropTypes = {
+    app_list: Array<DataMessagesApiListPropTypes>;
+    echo_req: any;
+    msg_type: string;
+    req_id: number;
+}
+
 const AppAuthentificationRegistration: React.FC = () => {
 
     const {
@@ -29,32 +36,9 @@ const AppAuthentificationRegistration: React.FC = () => {
     const [messagesApiList, setMessagesApiList] = useState<Array<MessageType>>([]);
     const request_input = useRef<HTMLTextAreaElement>(null);
     const [request, setRequest] = useState("");
-    const [token, setToken] = useState<string>("");
+    const [token, setToken] = useState<string>("");    
 
-    // useEffect(() => {
-    //     () => messages;
-    // }, [messages]);
-
-    console.log("messages", messages);
-    console.log("messages2", messagesApiList);
-
-    // type EchoReqPropTypes = {
-    //     app_list: number;
-    //     req_id: number;
-    // }
-
-    // type DataMessagesApiListPropTypes2 = {
-    //     app_list: Array<DataMessagesApiListPropTypes>;
-    //     echo_req: any;
-    //     msg_type: string;
-    //     req_id: number;
-    // }
-    // type TablePropTypes = {
-    //     dataMessagesApiList: Array<DataMessagesApiListPropTypes2>;
-    // };
-
-    const dataMessagesApiList: Array<DataMessagesApiListPropTypes> = messagesApiList[1]?.body?.app_list;
-    console.log("dataMessagesApiList!!!!", dataMessagesApiList);
+    const dataMessagesApiList: Array<DataMessagesApiListPropTypes> = (messagesApiList[1]?.body as DataBodyMessagesApiListPropTypes)?.app_list;
 
     useEffect(() => {
         const sessionStorage_data = sessionStorage.getItem("session_data");
@@ -81,7 +65,6 @@ const AppAuthentificationRegistration: React.FC = () => {
                 .send(request)
                 .then((res: string) => {
                     setMessagesApiList([...messagesApiList, { body: request, type: "req" }, { body: res, type: "res" }])
-                    console.log("res sendRequestApiList", res);
                 }
                 )
                 .catch((err: Error) =>
@@ -133,10 +116,6 @@ const AppAuthentificationRegistration: React.FC = () => {
         [token, sendRequest]
     );
 
-    // if(isSendRequest){
-    //     Promise.then(() => sendRequest(true); ///should besend request
-    // }
-
     const handleTextAreaInput: React.ChangeEventHandler<HTMLTextAreaElement> = e => setRequest(e.target.value);
     
     const json_box_props = {
@@ -182,7 +161,8 @@ const AppAuthentificationRegistration: React.FC = () => {
             <div className={styles["request-container"]}>
                 <Table 
                     dataMessagesApiList={dataMessagesApiList}
-                    isSendApiList={isSendApiList}/>
+                    isSendApiList={isSendApiList}
+                    inputListText={inputListText}/>
                 <fieldset className={styles["mb-0"]}>
                     <RequestJSONBox
                         isAppRegistration={true}
