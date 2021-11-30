@@ -3,7 +3,6 @@
     max-width: 100%;
     margin-bottom: 40px;
     overflow-x: auto;
-    display: none;
 
     .flex-table {
         border: solid 1px #d6dadb;
@@ -22,4 +21,10 @@
             }
         }
     }
+}
+.table-wrapper-display {
+    display: flex;
+}
+.table-wrapper-no-display {
+    display: none;
 }

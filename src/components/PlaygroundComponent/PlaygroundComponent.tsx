@@ -10,9 +10,10 @@ import playground_requests from "utils/playground_requests";
 import send from "utils/send";
 import receive from "utils/receive"
 import style from "./PlaygroundComponent.module.scss";
+import { DataBodyMessagesApiListPropTypes } from "components/Documentation/AppAuthentificationRegistration/AppAuthentificationRegistration";
 
 export type MessageType = {
-    body: string | Error | {};
+    body: string | Error | DataBodyMessagesApiListPropTypes | {};
     type: string;
 };
 
