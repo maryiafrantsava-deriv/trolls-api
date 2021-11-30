@@ -4,7 +4,7 @@ import ConsoleMessage from "components/ConsoleMessage/ConsoleMessage";
 import { InputListTextPropTypes } from "components/Documentation/AppAuthentificationRegistration/AppAuthentificationRegistrationPropTypes";
 import { MessageType } from "components/PlaygroundComponent/PlaygroundComponent";
 import { ResetSendButtonsBlock } from "components/ResetSendButtonsBlock/ResetSendButtonsBlock";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import style from "./RequestJSONBox.module.scss";
 
 type RequestJSONBoxPropTypes = {
@@ -32,6 +32,17 @@ const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({
     inputListText,
     isRegister,
 }) => {
+    const messagesRef = useRef<HTMLDivElement | null>(null);
+    useEffect(() => {
+        setTimeout(() => {
+            messagesRef.current?.scrollTo({
+                top: messagesRef.current.scrollHeight,
+                left: 0,
+                behavior: "smooth",
+            });
+        }, 500);
+    }, [messagesRef, messages]);
+
     return (
         <div className={isAppRegistration ? style["form-content"] : style["playground-box"]}>
             {isAppRegistration ? (
@@ -50,7 +61,7 @@ const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({
                 }
                 placeholder={"Request JSON"}
                 ref={request_input}
-                value={ isAppRegistration && isRegister ? JSON.stringify(inputListText, null, 2) : request_example }
+                value={isAppRegistration && isRegister ? JSON.stringify(inputListText, null, 2) : request_example}
                 onChange={handleChange}
                 spellCheck={isAppRegistration ? false : undefined}
             />
@@ -61,7 +72,7 @@ const RequestJSONBox: React.FC<RequestJSONBoxPropTypes> = ({
                 current_api={current_api}
             />
             {messages && (
-                <div id="playground-console" className={style["playground-console"]}>
+                <div id="playground-console" className={style["playground-console"]} ref={messagesRef}>
                     {messages?.map((message, index) => (
                         <ConsoleMessage key={"message" + index} message={message}></ConsoleMessage>
                     ))}
